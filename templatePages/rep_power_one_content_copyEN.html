@@ -1,0 +1,1985 @@
+<style type="text/css">.tg-0lax{vertical-align: middle;  text-align: center;}</style>
+<!--
+card-header
+nav nav-pills card-header-pills
+-->
+<div class="card text-center pt-3">
+	<div class="nav-align-top nav-tabs-shadow mb-4 ps-0 pt-2"> 
+	  <ul class="nav nav-tabs nav-fill" role="tablist">
+		<li class="nav-item" role="presentation">
+		  <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-within-card-active" aria-controls="navs-pills-within-card-active" aria-selected="true">
+			Оглавление
+		  </button>
+		</li>
+		<li class="nav-item" role="presentation">
+		  <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-within-card-1" aria-controls="navs-pills-within-card-1" aria-selected="false" tabindex="1">
+			Рентабельность
+		  </button>
+		</li>
+		<li class="nav-item" role="presentation">
+		  <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-within-card-2" aria-controls="navs-pills-within-card-2" aria-selected="false" tabindex="2">
+			Рабочий капитал
+		  </button>
+		</li>
+		<li class="nav-item" role="presentation">
+		  <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-within-card-3" aria-controls="navs-pills-within-card-3" aria-selected="false" tabindex="3">
+			Внеоборотный капитал
+		  </button>
+		</li>
+		<li class="nav-item" role="presentation">
+		  <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-within-card-4" aria-controls="navs-pills-within-card-4" aria-selected="false" tabindex="4">
+		   Финансирование
+		  </button>
+		</li>
+		<li class="nav-item" role="presentation">
+		  <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-within-card-5" aria-controls="navs-pills-within-card-5" aria-selected="false" tabindex="5">
+		   Структура данных
+		  </button>
+		</li>
+	  </ul>
+	</div>
+	<div class="card-body p-0">
+	  <div class="tab-content p-0">
+		<div class="tab-pane fade active show" id="navs-pills-within-card-active" role="tabpanel">
+		  <!--<h4 class="card-title ">Сводный отчет</h4>-->
+			<div class="container p-3">
+			
+			<div class="w-100 p-3"></div>
+			<div class="card">
+			<div class="card-body align-self-center p-0" style="width: 100%;max-width: 1000px;">
+		  
+			  <div class="row">
+				<div class="col col-lg-3 text-start">
+				  <h5 class="card-title ">История вашей прибыли</h5>
+				</div>
+				<div class="col-6">
+				</div>
+				<div class="col col-lg-3 text-end">
+				  {{periodDate|raw}}
+				</div>
+			  </div>
+			  <div class="w-100"></div>
+				<!--Profit-->
+			  <div class=" text-center border-bottom" id="sm_chat_1"><!--border-bottom-->
+				
+			  </div>
+			  <div class="row mt-2 mb-4">
+				<div class="" style="margin-left:13px; max-width:110px;">
+				 {{profit.Revenue_|raw}}<br><small class="emp_post text-muted">Выручка (Revenue), руб.</small>
+			   </div>
+			   <div class="col "><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-minus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /></svg>
+			   </div>
+			   <div class="" style="max-width:110px;">
+				 {{profit.COGS_|raw}}<br><small class="emp_post text-muted">Абсолютно переменные расходы (COGS), руб.</small>
+			   </div>
+			   <div class="col "><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-equal"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 10h14" /><path d="M5 14h14" /></svg>
+			   </div>
+			   <div class="" style="max-width:110px;">
+				 {{profit.Gross_Margin_|raw}}<br><small class="emp_post text-muted">Маржинальная прибыль (Gross Margin), руб.</small>
+			   </div>
+			   <div class="col "><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-minus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /></svg>
+			   </div>
+			   <div class="" style="max-width:110px;">
+				 {{profit.Overheads_|raw}}<br><small class="emp_post text-muted">Операционные расходы (Overheads), руб.</small>
+			   </div>
+			   <div class="col "><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-equal"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 10h14" /><path d="M5 14h14" /></svg>
+			   </div>
+			   <div class="" style="margin-right:12px; max-width:110px;">
+				 {{profit.Operating_Profit_|raw}}<br><small class="emp_post text-muted">Операционная прибыль (Operating Profit), руб.</small>
+			   </div>
+			  
+			  </div>
+			  
+			  <table class="dt-fixedcolumns table table-bordered dataTable  table-hover no-footer" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" style="width: 100%;">
+				<thead>
+					<tr><!--  class="table-light" -->
+						{{ column | raw }}
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+					    {{ table | raw }}
+					</tr>
+					<tr>
+					    {{ table1 | raw }}
+					</tr>
+					<tr>
+					    {{ table2 | raw }}
+					</tr>
+					<tr>
+					    {{ table3 | raw }}
+					</tr>
+				</tbody>
+			 </table>
+			 <div class="w-100 p-4"></div>
+			 <!--balance-->
+			 <div class="row">
+				<div class="col col-lg-3 text-start">
+				  <h5 class="card-title ">История баланса</h5>
+				</div>
+				<div class="col-6">
+				</div>
+				<div class="col col-lg-3 text-end">
+				  {{periodDate|raw}}
+				</div>
+			  </div>  
+			  
+			  <div class=" text-center border-bottom" id="bal_chat_1"><!--border-bottom-->
+				
+			  </div>
+			  <div class="row mt-2 mb-4">
+			   <div class="" style="margin-left:13px; max-width:110px;">
+				{{balance.Equity_|raw}}<br><small class="emp_post text-muted">Капитал (Equity)</small>
+			   </div>
+			   <div class="col ">
+				<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-equal"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 10h14" /><path d="M5 14h14" /></svg>
+			   </div>
+			   <div class="col " style="max-width:110px;">{{balance.CurrentAssets_|raw}}<br><small class="emp_post text-muted">Оборотные активы (Current Assets)</small></div>
+			   <div class="col ">
+			   <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+			   </div>
+			   <div class="col " style="max-width:110px;">{{balance.NonCurrentAssets_|raw}}<br><small class="emp_post text-muted">Внеоборотные активы (Non Current Assets)</small></div>
+			   <div class="col ">
+			   <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-minus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /></svg>
+			   </div>
+			   <div class="col " style="max-width:110px;">{{balance.CurrentLiabilities_|raw}}<br><small class="emp_post text-muted">Краткосрочные обязательства (Current Liabilities)</small></div>
+			   <div class="col ">
+			   <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-minus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /></svg>
+			   </div>
+			   <div class="col " style="margin-right:12px; max-width:110px;">{{balance.NonCurrentLiabilities_|raw}}<br><small class="emp_post text-muted">Долгосрочные обязательства (Non Current Liabilities)</small></div>
+			</div>
+			
+			 <table class="dt-fixedcolumns table table-bordered dataTable  table-hover no-footer" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info" style="width: 100%;">
+				<thead>
+					<tr><!--  class="table-light" -->
+						{{ column | raw }}
+					</tr>
+				</thead>
+				<tbody>
+					
+					<tr>
+					    {{ table_bal3 | raw }}
+					</tr>
+					<tr>
+					    {{ table_bal2 | raw }}
+					</tr>
+					<tr>
+					    {{ table_bal1 | raw }}
+					</tr>
+					<tr>
+					    {{ table_bal | raw }}
+					</tr>
+				</tbody>
+			 </table>
+			<!--Cash-->
+			 <div class="w-100 p-4"></div>
+		  
+			 <div class="row">
+				<div class="col col-lg-3 text-start">
+				  <h5 class="card-title ">История денежного потока</h5>
+				</div>
+				<div class="col-6">
+				</div>
+				<div class="col col-lg-3 text-end">
+				  {{periodDate|raw}}
+				</div>
+			  </div>  
+			  
+			  <div class=" text-center" id="cash_chat_1"><!--border-bottom-->
+				
+			  </div>
+			  <div class="row mt-2 mb-4">
+			   
+			  </div>
+			
+			 <table class="dt-fixedcolumns table table-bordered dataTable  table-hover no-footer" id="DataTables_Table_2" aria-describedby="DataTables_Table_2_info" style="width: 100%;">
+				<thead>
+					<tr><!--  class="table-light" -->
+						{{ column | raw }}
+					</tr>
+				</thead>
+				<tbody>
+					
+					<tr>
+					   {{ table_cash1 | raw }}
+					</tr>
+					<tr>
+					    {{ table_cash2 | raw }}
+					</tr>
+					<tr>
+					     {{ table_cash3 | raw }}
+					</tr>
+					<tr>
+					    {{ table_cash | raw }}
+					</tr>
+				</tbody>
+			 </table>
+		  
+		  </div><!-- card body panel 1-->
+
+		 </div>
+
+		</div>
+		</div>
+		<!-- panel 2 -->
+		<div class="tab-pane fade" id="navs-pills-within-card-1" role="tabpanel">
+		 <div class="container p-3">
+		  <div class="w-100 p-3"></div>  
+		  <div class="card">
+		   <div class="card-body align-self-center p-0" style="width: 100%;max-width: 1000px;">
+		    <div class="row">
+				<div class="col col-lg-3 text-start">
+				  <h5 class="card-title ">Рентабельность</h5>
+				</div>
+				<div class="col-6">
+				</div>
+				<div class="col col-lg-3 text-end">
+				  {{periodDate|raw}}
+				</div>
+			</div>
+			  
+			 <div class="w-100"></div>
+			  
+		    <div class="row">
+		    {% for dd in profit_main %}
+			<div class="col mb-4">
+			  <div class="card border card-border-shadow-primary h-100">
+				<div class="card-body">
+				  <div class="text-center mb-2 pb-1">
+					<h4 class="ms-1 mb-0">{{dd.snt|raw}}</h4>
+				  </div>
+				  <p class="mb-1">{{dd.title|raw}}</p>
+				  <p class="mb-0">
+					<span class="badge rounded-pill bg-label-{{dd.color|raw}}">{{dd.prc|raw}}</span>
+					<!--<small class="text-muted"></small>-->
+				  </p>
+				</div>
+			  </div>
+			</div>
+			{% endfor %}
+			</div><!--row-->
+			<div class="w-100 p-4"></div>
+		  
+			 <div class="row">
+				<div class="col col-lg-9 text-start">
+				  <h5 class="card-title ">Тенденции рентабельности</h5>
+				</div>
+				<div class="col-3">
+				</div>
+
+			  </div>  
+			  
+			  <div class=" text-center" id="profibility_chat_1"><!--border-bottom-->
+				
+			  </div>
+			 <div class="w-100 p-4"></div>
+			 <div class="row">
+				<div class="col col-lg-9 text-start">
+				  <h5 class="card-title ">Увеличение прибыли VS увеличение переменных затрат</h5>
+				</div>
+				<div class="col-3">
+				</div>
+			 </div>  
+			 <div class=" text-center" id="profibility_chat_2"><!--border-bottom-->
+			 </div>
+			 
+			 <div class="w-100 p-4"></div>
+			 <div class="row">
+				<div class="col col-lg-9 text-start">
+				  <h5 class="card-title ">Увеличение прибыли VS увеличение постоянных затрат</h5>
+				</div>
+				<div class="col-3">
+				</div>
+			 </div>  
+			 <div class=" text-center" id="profibility_chat_3"><!--border-bottom-->
+			 </div>
+			  
+			 <div class="w-100 p-4"></div>
+			 <div class="row">
+				<div class="col col-lg-9 text-start">
+				  <h5 class="card-title ">Коэффициенты рентабельности</h5>
+				</div>
+				<div class="col-3">
+				</div>
+			  </div> 
+			
+			 <table class="dt-fixedcolumns table table-bordered dataTable  table-hover no-footer" id="DataTables_Table_3" aria-describedby="DataTables_Table_3_info" style="width: 100%;">
+				<thead>
+					<tr><!--  class="table-light" -->
+						{{ column | raw }}
+					</tr>
+				</thead>
+				<tbody>
+					{% for row in profit_table %}
+					<tr>
+						<td align="left">{{row.name|raw}}</td><td class="{{row.txtclass|raw}}">{{row.snt2|raw}}</td><td class="{{row.txtclass|raw}}">{{row.snt1|raw}}</td><td><span class="badge rounded-pill bg-label-{{row.color|raw}}">{{row.prc|raw}}</span></td>		  
+					</tr>
+					{% endfor %}
+				</tbody>
+			 </table>
+			
+			
+			
+		   </div>
+		  </div>
+		 </div>
+		</div>
+		<!-- panel 2-->
+		<div class="tab-pane fade" id="navs-pills-within-card-2" role="tabpanel">
+		 <div class="container p-3">
+		  <div class="w-100 p-3"></div>  
+		  <div class="card">
+		   <div class="card-body align-self-center p-0" style="width: 100%;max-width: 1000px;">
+		    <div class="row">
+				<div class="col col-lg-3 text-start">
+				  <h5 class="card-title ">Рабочий капитал</h5>
+				</div>
+				<div class="col-6">
+				</div>
+				<div class="col col-lg-3 text-end">
+				  {{periodDate|raw}}
+				</div>
+			</div>
+			  
+			 <div class="w-100"></div>
+			  
+		    <div class="row">
+		    {% for dd in capital_main %}
+			<div class="col mb-4">
+			  <div class="card border card-border-shadow-primary h-100">
+				<div class="card-body">
+				  <div class="text-center mb-2 pb-1">
+					<h4 class="ms-1 mb-0">{{dd.snt|raw}}</h4>
+				  </div>
+				  <p class="mb-1">{{dd.title|raw}}</p>
+				  <p class="mb-0">
+					<span class="badge rounded-pill bg-label-{{dd.color|raw}}">{{dd.prc|raw}}</span>
+					<!--<small class="text-muted"></small>-->
+				  </p>
+				</div>
+			  </div>
+			</div>
+			{% endfor %}
+			</div><!--row-->
+			<div class="w-100 p-4"></div>
+			
+			<div class="row">
+			  <div class="col col-lg-9 text-start">
+			   <h5 class="card-title ">Тренды рабочего капитала</h5>
+			  </div>
+			  <div class="col-3">
+			  </div>
+			</div>  
+			<div class=" text-center" id="capital_chat_1">
+			</div>
+			<div class="w-100 p-4"></div>
+			
+			
+			<div class="row p-3">
+			  <div class="col col-lg-9 text-start">
+			   <h5 class="card-title ">Финансовый цикл</h5>
+			  </div>
+			  <div class="col-3">
+			  </div>
+			</div>  
+			<div class="row p-2">
+			  <div class="col-10 text-start">
+				<div class=" text-center" id="capital_chat_2">
+				</div>
+			  </div>
+			  <div class="col-2 text-center">
+				<div class="border d-flex flex-column align-items-center justify-content-center" style="margin-top: 23px;  height: 105px; background-color: #008299;">
+					<h4 class="m-0 p-0 text-white">{{capital_chart.wcap1|raw}}</h4><div class="w-100"></div>
+					<small class="item text-white">Фин. цикл</small>
+				</div>
+				<div class="border d-flex flex-column align-items-center justify-content-center" style="margin-top: 10px;  height: 105px; background-color: #008299;">
+					<h4  class="m-0 p-0 text-white">{{capital_chart.wcap2|raw}}</h4><div class="w-100"></div>
+					<small class="item text-white">Фин. цикл</small>
+				</div>
+			  </div>
+			</div>
+			
+			<div class="w-100 p-4"></div>
+			<div class="row p-3">
+			  <div class="col col-lg-9 text-start">
+			   <h5 class="card-title ">Рабочий капитал на ₽100</h5>
+			  </div>
+			  <div class="col-3">
+			  </div>
+			</div>  
+			
+			<div class="row p-2"  style="min-width:1000px; ">
+				<div class="col-8 text-center">
+					<div class="row ">
+						<div class="col "></div>
+						<div class="col-2">
+							<div class="border d-flex flex-column align-items-center justify-content-center text-white" style="width:110px; height:100px; background-color: #D8609A;">
+								 {{capital_main[1].snt|raw}} ₽<br><small class="item">Inventory</small>
+							</div>
+						</div>
+						<div class="col-2 text-center position-relative">
+							<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-plus position-absolute top-50 start-50 translate-middle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+						</div>
+						<div class="col-2">
+							<div class="border d-flex flex-column align-items-center justify-content-center text-white" style="width:110px; height:100px; background-color: #C0458A;">
+								 {{capital_main[0].snt|raw}} ₽<br><small class="item text-white">Receivables </small>
+							   </div>
+						</div>
+						<div class="col-2 text-center position-relative">
+							<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-minus position-absolute top-50 start-50 translate-middle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /></svg>
+						</div>
+						<div class="col-2">
+							<div class="border d-flex flex-column align-items-center justify-content-center text-white" style="width:110px; height:100px; background-color: #8F3192;">
+								 {{capital_main[2].snt|raw}} ₽<br><small class="item text-white">Payables</small>
+							   </div>
+						</div>
+						<div class="col "></div>
+					</div>
+					<hr class="m-1">
+					<div class="row mt-2">
+						<div class="col "></div>
+						<div class="col-2 text-center"></div>
+						<div class="col-2 text-center"></div>
+						<div class="col-2 text-center" >
+							<div class="border d-flex flex-column align-items-center justify-content-center text-white" style="width:110px; height:100px; background-color: #63218F;">
+								 {{profit_main[0].snt|raw}} ₽<br><small class="item text-white">Выручка</small>
+							</div>
+						</div>
+						<div class="col-2 text-center"></div>
+						<div class="col-2 text-center"></div>
+						<div class="col "></div>
+					</div>
+				</div>
+				<div class="col-1 text-center position-relative">
+					<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-equal position-absolute top-50 start-50 translate-middle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 10h14" /><path d="M5 14h14" /></svg>
+				</div>
+				<div class="col-3 text-center">
+					<div class="row mt-2">
+						<div class="col text-start">Рабочий капитал</div>
+						<div class="col text-end">{{capital_chart.wcPer100.capital|raw}}</div>
+					</div>
+					<div class="row mt-2">
+						<div class="col text-start">Inventory</div>
+						<div class="col text-end">{{capital_chart.wcPer100.Inventory|raw}}</div>
+					</div>
+					<div class="row mt-2">
+						<div class="col text-start">Receivables</div>
+						<div class="col text-end">{{capital_chart.wcPer100.Receivables|raw}}</div>
+					</div>
+					<div class="row mt-2">
+						<div class="col text-start">Payables</div>
+						<div class="col text-end">{{capital_chart.wcPer100.Payables|raw}}</div>
+					</div>
+					<hr class="m-1">
+					<div class="small text-start">На каждые 100₽ выручки<br>вы инвестируете {{capital_chart.wcPer100.capital|raw}}₽ в рабочий капитал		
+					</div>
+				</div>
+			</div>
+			
+			<div class="w-100 p-4"></div>
+			<div class="row p-3">
+			  <div class="col col-lg-9 text-start"><!--Investment in Working Capital per $100-->
+			   <h5 class="card-title ">Инвестиции в рабочий капитал на ₽100</h5>
+			  </div>
+			  <div class="col-3">
+			  </div>
+			</div>  
+			<div class=" text-center" id="capital_chat_3">
+			</div>
+			
+			<div class="w-100 p-4"></div>
+			<div class="row p-3">
+			  <div class="col col-lg-9 text-start"> <!--Gross Margin vs Working Capital per $100-->
+			   <h5 class="card-title ">Чистая прибыль VS Рабочий капитал на ₽100</h5>
+			  </div>
+			  <div class="col-3">
+			  </div>
+			</div>  
+			<div class=" text-center" id="capital_chat_4">
+			</div>
+			
+			<div class="w-100 p-4"></div>
+			<div class="row p-3">
+			  <div class="col col-lg-9 text-start"> <!--Working Capital Ratios-->
+			   <h5 class="card-title ">Коэффициенты оборотного капитала</h5>
+			  </div>
+			  <div class="col-3">
+			  </div>
+			</div>  
+			<table class="dt-fixedcolumns table table-bordered dataTable  table-hover no-footer" id="DataTables_Table_4" aria-describedby="DataTables_Table_4_info" style="width: 100%;">
+				<thead>
+					<tr><!--  class="table-light" -->
+						{{ column | raw }}
+					</tr>
+				</thead>
+				<tbody>
+					{% for row in capital_chart.capital_table %}
+					<tr>
+						<td align="left">{{row.name|raw}}<span class="{{row.txtclass|raw}}">{{row.edizm|raw}}</span></td><td class="{{row.txtclass|raw}}">{{row.snt2|raw}}</td><td class="{{row.txtclass|raw}}">{{row.snt1|raw}}</td><td><span class="badge rounded-pill bg-label-{{row.color|raw}}">{{row.prc|raw}}</span></td>		  
+					</tr>
+					{% endfor %}
+				</tbody>
+			 </table>
+			
+			<div class="w-100 p-4"></div> 
+			<div class="row p-3">
+			  <div class="col col-lg-9 text-start">  
+			   <h5 class="card-title ">Потребность в оборотных средствах для поддержания текущего состояния (руб.)	</h5>
+			  </div>
+			  <div class="col-3">
+			  </div>
+			</div>  
+			<table class="dt-fixedcolumns table table-bordered dataTable  table-hover no-footer" id="DataTables_Table_5" aria-describedby="DataTables_Table_5_info" style="width: 100%;">
+				<thead>
+					<tr><!--  class="table-light" -->
+						{{ column | raw }}
+					</tr>
+				</thead>
+				<tbody>
+					{% for row in capital_chart.capital_table_add %}
+					<tr>
+						<td align="left">{{row.name|raw}}</td><td class="{{row.txtclass2|raw}}">{{row.snt2|raw}}</td><td class="{{row.txtclass1|raw}}">{{row.snt1|raw}}</td><td><span class="badge rounded-pill bg-label-{{row.color|raw}}">{{row.prc|raw}}</span></td>		  
+					</tr>
+					{% endfor %}
+				</tbody>
+			 </table>
+			<div class="w-100 p-4"></div> 
+				
+		   </div>
+		  </div>  
+		 </div>  
+		</div> <!-- panel 3-->
+		
+		<div class="tab-pane fade" id="navs-pills-within-card-3" role="tabpanel">
+		 <div class="container p-3">
+		  <div class="w-100 p-3"></div>  
+		  <div class="card">
+		   <div class="card-body align-self-center p-0" style="width: 100%;max-width: 1000px;">
+		    <div class="row">
+				<div class="col col-lg-3 text-start">
+				  <h5 class="card-title ">Внеоборотный капитал</h5>
+				</div>
+				<div class="col-6">
+				</div>
+				<div class="col col-lg-3 text-end">
+				  {{periodDate|raw}}
+				</div>
+			</div>
+			<div class="w-100"></div>
+			  
+		    <div class="row">
+		    {% for dd in other_main %}
+			<div class="col mb-4">
+			  <div class="card border card-border-shadow-primary h-100">
+				<div class="card-body">
+				  <div class="text-center mb-2 pb-1">
+					<h4 class="ms-1 mb-0">{{dd.snt|raw}}</h4>
+				  </div>
+				  <p class="mb-1">{{dd.title|raw}}</p>
+				  <p class="mb-0">
+					<span class="badge rounded-pill bg-label-{{dd.color|raw}}">{{dd.prc|raw}}</span>
+					<!--<small class="text-muted"></small>-->
+				  </p>
+				</div>
+			  </div>
+			</div>
+			{% endfor %}
+			</div><!--row-->
+			<div class="w-100 p-4"></div>
+			<div class="row">
+			  <div class="col col-lg-9 text-start">
+			   <h5 class="card-title ">Тренды возврата капитала</h5>
+			  </div>
+			  <div class="col-3">
+			  </div>
+			</div>  
+			<div class=" text-center" id="other_chat_1">
+			</div>
+			<div class="w-100 p-4"></div> 
+			
+			
+			
+			<div class="row">
+			  <div class="col col-lg-9 text-start">
+			   <h5 class="card-title ">Возврат капитала,%</h5>
+			  </div>
+			  <div class="col-3">
+			  </div>
+			</div>  
+			
+			<div class="row p-2" style="min-width:1000px; ">
+				<div class="col text-center">
+					<div>
+						<div class="border d-flex flex-column align-items-center justify-content-center text-white" style="width:110px; height:100px; background-color: #F3ACA2;">
+							 {{other_chart.formula.Operating_Profit|raw}} ₽<br><small class="item">Operating Profit</small>
+						</div>
+					</div>
+					<hr class="mt-1 mb-1" style="min-width:110px; border: 1px solid GREY;">
+					<div>
+						<div class="border d-flex flex-column align-items-center justify-content-center text-white" style="width:110px; height:100px; background-color: #EE8B97;">
+							 {{other_chart.formula.Revenue|raw}} ₽<br><small class="item">Revenue</small>
+						</div>
+					</div>
+				</div>	
+				<div class="col text-center position-relative">
+					<div class="" >
+						<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-x position-absolute top-50 start-50 translate-middle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+					</div>
+				</div>
+				<div class="col-4 text-center">
+					<div class="row ">
+						<div class="col "></div>
+						<div class="col ">
+							<div class="border d-flex flex-column align-items-center justify-content-center text-white" style="width:110px; height:100px; background-color: #E96A8D;">
+							 {{other_chart.formula.Revenue|raw}} ₽<br><small class="item">Revenue</small>
+							</div>
+						</div>
+						<div class="col "></div>
+					</div>
+					<hr class="mt-1 mb-1" style="min-width:110px; border: 1px solid GREY;">
+					<div class="row mt-2">
+						<div class="col ">
+							<div class="border d-flex flex-column align-items-center justify-content-center text-white" style="width:110px; height:100px; background-color: #DB5087;">
+							 {{other_chart.formula.capital|raw}} ₽<br><small class="item">Work capital</small>
+							</div>
+						</div>
+						<div class="col  text-center position-relative">
+							<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-plus position-absolute top-50 start-50 translate-middle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+						</div>
+						<div class="col ">
+							<div class="border d-flex flex-column align-items-center justify-content-center text-white" style="width:110px; height:100px; background-color: #B8428C;">
+							 {{other_chart.formula.Other|raw}} ₽<br><small class="item">Other capital</small>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col text-center  position-relative">
+					<div class=" " >
+						<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-equal position-absolute top-50 start-50 translate-middle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 10h14" /><path d="M5 14h14" /></svg>
+					</div>
+				</div>
+				<div class="col text-center">
+					<div>
+						<div class="border d-flex flex-column align-items-center justify-content-center text-white" style="width:110px; height:100px; background-color: #973490;">
+							 {{other_chart.formula.Operating_Profit|raw}} ₽<br><small class="item">Operating Profit</small>
+						</div>
+					</div>
+					<hr class="mt-1 mb-1" style="min-width:110px; border: 1px solid GREY;">
+					<div>
+						<div class="border d-flex flex-column align-items-center justify-content-center text-white" style="width:110px; height:100px; background-color: #742796;">
+							 {{other_chart.formula.NetOperatingAssets|raw}} ₽<br><small class="item">Net Operating Assets</small>
+						</div>
+					</div>
+				</div>	
+				<div class="col text-center position-relative">
+					<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-equal position-absolute top-50 start-50 translate-middle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 10h14" /><path d="M5 14h14" /></svg>
+				</div>
+				<div class="col-3 text-center">
+					<div class="border d-flex flex-column align-items-center justify-content-center" style="min-width:160px; margin-top:44px; padding: 37px 0px;">
+						<h4 class="card-title ">{{other_chart.formula.return_capital|raw}} %</h4>
+						<div class="small">Return on Capital</div>
+					</div>
+				</div>
+			</div>
+			<div class="w-100 p-4"></div>
+			<div class="row p-3">
+			  <div class="col col-lg-9 text-start">  
+			   <h5 class="card-title ">Коэффициенты внеоборотного капитала</h5>
+			  </div>
+			  <div class="col-3">
+			  </div>
+			</div>  
+			<table class="dt-fixedcolumns table table-bordered dataTable  table-hover no-footer" id="DataTables_Table_6" aria-describedby="DataTables_Table_6_info" style="width: 100%;">
+				<thead>
+					<tr><!--  class="table-light" -->
+						{{ column | raw }}
+					</tr>
+				</thead>
+				<tbody>
+					{% for row in other_chart.other_table %}
+					<tr>
+						<td align="left">{{row.name|raw}}<span class="{{row.txtclass|raw}}">{{row.edizm|raw}}</span></td><td class="{{row.txtclass|raw}}">{{row.snt2|raw}}</td><td class="{{row.txtclass|raw}}">{{row.snt1|raw}}</td><td><span class="badge rounded-pill bg-label-{{row.color|raw}}">{{row.prc|raw}}</span></td>  
+					</tr>
+					{% endfor %}
+				</tbody>
+			 </table>
+			<div class="w-100 p-4"></div> 
+			
+		    </div> <!--card-body 1000-->
+		  </div>	
+		 </div>	
+		</div><!-- panel 4-->
+		
+		
+		<div class="tab-pane fade" id="navs-pills-within-card-4" role="tabpanel">
+		  <div class="container p-3">
+		  <div class="w-100 p-3"></div>  
+		  <div class="card">
+		   <div class="card-body align-self-center p-0" style="width: 100%;max-width: 1000px;">
+		    <div class="row">
+				<div class="col col-lg-3 text-start">
+				  <h5 class="card-title ">Финансирование</h5>
+				</div>
+				<div class="col-6">
+				</div>
+				<div class="col col-lg-3 text-end">
+				  {{periodDate|raw}}
+				</div>
+			</div>
+			<div class="w-100"></div>
+			  
+		    <div class="row">
+		    {% for dd in funding_main %}
+			<div class="col mb-4">
+			  <div class="card border card-border-shadow-primary h-100">
+				<div class="card-body">
+				  <div class="text-center mb-2 pb-1">
+					<h4 class="ms-1 mb-0">{{dd.snt|raw}}</h4>
+				  </div>
+				  <p class="mb-1">{{dd.title|raw}}</p>
+				  <p class="mb-0">
+					<span class="badge rounded-pill bg-label-{{dd.color|raw}}">{{dd.prc|raw}}</span>
+					<!--<small class="text-muted"></small>-->
+				  </p>
+				</div>
+			  </div>
+			</div>
+			{% endfor %}
+			</div><!--row-->
+			<div class="w-100 p-4"></div> 
+			<div class="row">
+			  <div class="col col-lg-9 text-start">
+			   <h5 class="card-title ">Тренды финансирования</h5>
+			  </div>
+			  <div class="col-3">
+			  </div>
+			</div>  
+			<div class=" text-center" id="funding_chat_1">
+			</div>
+			<div class="w-100 p-4"></div> 
+			<div class="row">
+			  <div class="col col-lg-9 text-start">
+			   <h5 class="card-title ">Ваши финаннсы</h5>
+			  </div>
+			  <div class="col-3">
+			  </div>
+			</div> 
+			<div class=" text-center" >
+				<table class="dt-fixedcolumns table table-bordered dataTable  table-hover no-footer" id="DataTables_Table_7" aria-describedby="DataTables_Table_0_info" style="width: 100%;">
+				<thead>
+					<tr><!--  class="table-light" -->
+						<th class="text-center"></th><th class="text-center"><span class="ti ti-plus me-sm-1 text-success"></span> Денежный поток</th><th class="text-center"><span class="ti ti-minus me-sm-1 text-danger"></span> Денежный поток</th> 
+					</tr>
+				</thead>
+				<tbody>
+					{% for row in funding_chart.funding_table %}
+					<tr class="{{row.rowclass|raw}}">
+						<td align="left">{{row.name|raw}}</td>
+						<td class="text-end {{row.txtclass2|raw}}">{{row.prc2|raw}} </td>		
+						<td class="text-end {{row.txtclass1|raw}}">{{row.prc1|raw}} </td>						
+					</tr>
+					{% endfor %}
+					
+				</tbody>
+			  </table>
+			</div>
+			<div class="border d-flex flex-column align-items-left justify-content-center mb-2" style="width:100%; height:50px; background-color: {{funding_chart.result.color|raw}}; font-size: large;  color: #2e2ea3;">
+			 {{funding_chart.result.text|raw}} 
+			</div>
+			
+			<div class="w-100 p-4"></div> 
+			<div class="row">
+			  <div class="col col-lg-9 text-start">
+			   <h5 class="card-title ">Ваше уравнение</h5>
+			  </div>
+			  <div class="col-3">
+			  </div>
+			</div> 
+			<div class="row align-items-center" style="max-width:1000px;">
+			  <div class="col-1"></div>
+			  <div class="col">
+				<div class=" text-center border-bottom pb-1" id="funding_chat_2">
+			    </div>
+				<div class="row border-bottom pb-1 mt-1">
+					<div class="col-5">
+						{{funding_chart.EquityOtstup|raw}} ₽<br><small class="item">Equity</small>
+					</div>
+					<div class="col-2 mt-2">
+						<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+					</div>
+					<div class="col-5">
+						{{funding_chart.NetDebtOtstup|raw}} ₽<br><small class="item">Net Debt</small>
+					</div>
+				</div>
+				<div class="text-center mt-1"  >
+					Funding 
+				</div>
+			  </div>
+			  <div class="col-1">
+				<div style="height:230px;"></div>
+				<div class="text-center"  >
+					<span class="ti ti-equal me-sm-1"></span>
+				</div>
+			  </div>
+			  <div class="col">
+				<div class=" text-center border-bottom pb-1" id="funding_chat_3">
+			    </div>
+				 <div class="row border-bottom pb-1 mt-1">
+					<div class="col-4">
+						{{funding_chart.WorkingCapitalOtstup|raw}} ₽<br><small class="item">Working Capital</small>
+					</div>
+					<div class="col-4 mt-2">
+						<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+					</div>
+					<div class="col-4">
+						{{funding_chart.OtherCapitalOtstup|raw}} ₽<br><small class="item">Other Capital</small>
+					</div>
+				</div>
+				<div class="text-center mt-1"  >
+					 Net Operating Assets
+				</div>
+			  </div>
+			  <div class="col-1"></div>
+			</div>
+			<div class="w-100 p-4"></div> 
+			
+			
+			<div class="row p-3">
+			  <div class="col col-lg-9 text-start">  
+			   <h5 class="card-title ">Прибыль против денежного потока</h5>
+			  </div>
+			  <div class="col-3">
+			  </div>
+			</div>  
+			<table class="dt-fixedcolumns table table-bordered dataTable  table-hover no-footer" id="DataTables_Table_7" aria-describedby="DataTables_Table_7_info" style="width: 100%;">
+				<thead>
+					<tr><!--  class="table-light" -->
+						<th class="text-center">Прибыль</th><th></th><th class="text-center">Денежный поток</th><th></th><th class="text-center">Дисперсия</th> 						
+					</tr>
+				</thead>
+				<tbody>
+					{% for row in funding_chart.funding_table2 %}
+					<tr>
+						<td align="left" class="{{row.txtclass2|raw}}">{{row.name2|raw}}<span>{{row.edizm2|raw}}</span></td><td class="{{row.txtclass22|raw}}">{{row.snt2|raw}}</td>
+						<td align="left" class="{{row.txtclass1|raw}}">{{row.name1|raw}}<span>{{row.edizm1|raw}}</span></td><td class="{{row.txtclass11|raw}}">{{row.snt1|raw}}</td>
+						<td><span class="badge rounded-pill bg-label-{{row.color|raw}}">{{row.prc|raw}}</span></td>  
+					</tr>
+					{% endfor %}
+				</tbody>
+			 </table>
+			<div class="w-100 p-4"></div> 
+			
+			
+			<div class="row p-3">
+			  <div class="col col-lg-9 text-start">  
+			   <h5 class="card-title ">Коэффициенты финансирования</h5>
+			  </div>
+			  <div class="col-3">
+			  </div>
+			</div>  
+			<table class="dt-fixedcolumns table table-bordered dataTable  table-hover no-footer" id="DataTables_Table_8" aria-describedby="DataTables_Table_8_info" style="width: 100%;">
+				<thead>
+					<tr><!--  class="table-light" -->
+						{{ column | raw }}
+					</tr>
+				</thead>
+				<tbody>
+					{% for row in funding_chart.funding_table3 %}
+					<tr>
+						<td align="left">{{row.name|raw}}<span class="{{row.txtclass|raw}}">{{row.edizm|raw}}</span></td><td class="{{row.txtclass|raw}}">{{row.snt2|raw}}</td><td class="{{row.txtclass|raw}}">{{row.snt1|raw}}</td><td><span class="badge rounded-pill bg-label-{{row.color|raw}}">{{row.prc|raw}}</span></td>  
+					</tr>
+					{% endfor %}
+				</tbody>
+			 </table>
+			<div class="w-100 p-4"></div> 
+			
+			
+		    </div> <!--card-body 1000-->
+		  </div>	
+		 </div>	
+		</div><!-- panel 5-->
+		
+		<div class="tab-pane fade" id="navs-pills-within-card-5" role="tabpanel"><!-- panel 6-->
+		  <div class="container p-3">
+		  <div class="w-100 p-3"></div>  
+		  <div class="card">
+		   <div class="card-body align-self-center p-0" style="width: 100%;max-width: 1000px;">
+		    <div class="row">
+				<div class="col col-lg-3 text-start">
+				  <h5 class="card-title ">Структура данных</h5>
+				</div>
+				<div class="col-6">
+				</div>
+				<div class="col col-lg-3 text-end">
+				  {{periodDate|raw}}
+				</div>
+			</div>
+			<div class="w-100"></div>
+			<div class="text-center">
+				<div id="svg-sankey" style="margin: 0 auto; width: 100%; max-width: 1000px; height: 700px;"></div>
+		    </div>
+			<div class="w-100 p-4"></div> 
+			
+			<div class="w-100"></div>
+			<div class="text-center">
+				<figure class="highcharts-figure">
+					<div id="container"></div>
+					<!--<p class="highcharts-description">
+						Описание диаграммы.
+					</p> -->
+				</figure>
+		    </div>
+			<div class="w-100 p-4"></div> 
+			
+			
+		   </div> <!--card-body 1000-->
+		  </div>	
+		 </div>	
+		</div><!-- panel 6 Структура данных-->
+	  </div>
+	</div>
+  </div>
+
+<script>
+//start after load page--
+  $(function() {
+	var chart1 = new ApexCharts(document.querySelector("#sm_chat_1"), options1);
+        chart1.render();
+	
+	var chart_bal1 = new ApexCharts(document.querySelector("#bal_chat_1"), opt_balance1);
+        chart_bal1.render();	
+		
+	var chart_cash1 = new ApexCharts(document.querySelector("#cash_chat_1"), opt_cash1);
+        chart_cash1.render();
+		
+		
+	var chart_profibility1 = new ApexCharts(document.querySelector("#profibility_chat_1"), opt_profibility1);
+        chart_profibility1.render();	
+		
+	var chart_profibility2 = new ApexCharts(document.querySelector("#profibility_chat_2"), opt_profibility2);
+        chart_profibility2.render();	
+		
+	var chart_profibility3 = new ApexCharts(document.querySelector("#profibility_chat_3"), opt_profibility3);
+        chart_profibility3.render();
+		
+
+	var chart_capital1 = new ApexCharts(document.querySelector("#capital_chat_1"), opt_capital1);
+        chart_capital1.render();	
+	var chart_capital2 = new ApexCharts(document.querySelector("#capital_chat_2"), opt_capital2);
+        chart_capital2.render();
+	var chart_capital3 = new ApexCharts(document.querySelector("#capital_chat_3"), opt_capital3);
+        chart_capital3.render();
+	var chart_capital4 = new ApexCharts(document.querySelector("#capital_chat_4"), opt_capital4);
+        chart_capital4.render();
+		
+		
+	var chart_other1 = new ApexCharts(document.querySelector("#other_chat_1"), opt_other1);
+        chart_other1.render();	
+		
+	var chart_funding1 = new ApexCharts(document.querySelector("#funding_chat_1"), opt_funding1);
+        chart_funding1.render();	
+	var chart_funding2 = new ApexCharts(document.querySelector("#funding_chat_2"), opt_funding2);
+        chart_funding2.render();	
+	var chart_funding3 = new ApexCharts(document.querySelector("#funding_chat_3"), opt_funding3);
+        chart_funding3.render();	
+		
+	//sankey---
+	console.log('>>');
+	var Sankey_s = new ApexSankey(document.getElementById('svg-sankey'), Sankey_graphOptions);
+	Sankey_s.render(Sankey_data);	
+	
+	Highcharts.chart('container', {
+		title: {
+			text: 'Структура баланса'
+		},
+		subtitle: {
+			text: ''
+		},
+		accessibility: {
+			point: {
+				valueDescriptionFormat: '{index}. {point.from} to {point.to}, ' + '{point.weight}.'
+			}
+		},
+		dataLabels : {
+			format: '{point.name}<br>{point.sum} тыс. руб.'
+		},
+		tooltip: {
+			headerFormat: null,
+			pointFormat: '{point.fromNode.name} \u2192 {point.toNode.name}: {point.weight} ' +  ' тыс. руб.',
+			nodeFormat: '{point.name}: {point.sum} тыс. руб.'
+		},
+		colors: ['#FBC1C1','#98E0AD', '#889DE0'],
+		
+		series: [{
+			nodeWidth: 10,
+			nodeAlignment:'center',
+			nodeDistance:50,
+			nodePadding:45,
+			//showInLegend: true,
+			//centerInCategory: true,
+			nodes: {{Sankey.balance.hinodes|raw}},
+			data: {{Sankey.balance.hiseries|raw}},
+			type: 'sankey',
+			name: 'Баланс'
+		}]
+	});
+	/*Highcharts.chart('svg-sankey', {
+    title: {
+        text: 'Структура баланса'
+    },
+    series: sankey_serial
+	}); */
+	
+  });
+	
+	var options1 = {
+          series: [{
+          name: '',
+          data: [{{profit.Revenue|raw}},null,{{profit.COGS|raw}}, null, {{profit.Gross_Margin|raw}},null,{{profit.Overheads|raw}},null, {{profit.Operating_Profit|raw}}]
+        }],
+        chart: {
+          type: 'bar',
+          height: 250,
+		  parentHeightOffset: 0,
+		  sparkline: {
+			enabled: true
+		  }
+        },
+        plotOptions: {
+          bar: {
+			distributed: true,
+            horizontal: false,
+            columnWidth: '75%',
+            endingShape: 'rounded'
+			
+          },
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+          categories: ['', '', '', '' , '' , '' , '' , '' , ''  ],
+        },
+		columnConfiguration : {
+			width: 100
+		},
+        yaxis: {
+			show: false,
+			min: 0,
+			max: {{profit.Revenue|raw}}
+		},
+		colors: ['#DF91A8','#222','#D8609A','#222','#C0458A','#222','#8F3192','#222', '#63218F' ],
+        fill: {
+          opacity: 1
+        },
+		toolbar: {
+			show: true,
+			tools: {
+			  download: false
+			}
+		  },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "" + val.toLocaleString('ru-RU') + " руб."
+            }
+          }
+        }
+        };
+		
+
+		var opt_balance1 = {
+          series: [{
+          name: '',
+          data: [{{balance.Equity|raw}},null, {{balance.CurrentAssets|raw}},null, {{balance.NonCurrentAssets|raw}},null, {{balance.CurrentLiabilities|raw}},null, {{balance.NonCurrentLiabilities|raw}}]
+        }],
+        chart: {
+          type: 'bar',
+          height: 250,
+		  parentHeightOffset: 0,
+		  sparkline: {
+			enabled: true
+		  }
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '100%',
+            endingShape: 'rounded',
+			distributed: true
+          },
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+          categories: ['', '', '', '', '', '', '', '', '' ],
+        },
+		columnConfiguration : {
+			width: 100
+		},
+        yaxis: {
+			show: false,
+			min: 0
+		},
+		colors: ['#F9D464', '#222', '#F2B154', '#222','#EC8F43','#222', '#E66C33', '#222', '#D35028'],
+        fill: {
+          opacity: 1
+        },
+		toolbar: {
+			show: true,
+			tools: {
+			  download: false
+			}
+		  },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "" + val.toLocaleString('ru-RU') + " руб."
+            }
+          }
+        }
+        };
+		
+		var opt_cash1 = {
+          series: [{
+			  name: 'Долгосрочные кредиты',
+			  color: '#2E62A1',
+			  data: [{{BankLoans_NonCurrent|raw}}]
+			},{
+			  name: 'Краткосрочные кредиты',
+			  color:'#44A7CB',
+			  data: [{{BankLoans_Current|raw}}]
+			},{
+			  name: 'Деньги',
+			  color: '#6FA8CD',
+			  data: [{{cash|raw}}]
+			}
+			
+		],
+        chart: {
+          type: 'bar',
+          height: 250,
+		  parentHeightOffset: 0,
+		  stacked: true 
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '50%',
+            endingShape: 'rounded' 
+          },
+        },
+        dataLabels: {
+          enabled: true
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+		  show: true,
+          categories: [{{periodList|raw}}],
+        },
+        legend: {
+          position: 'right',
+          offsetY: 40
+        },
+        //yaxis: {
+			//show: false,
+		//	min: 0
+		//},
+		//colors: ['#2E62A1', '#44A7CB', '#6FA8CD' ],
+        fill: {
+          opacity: 1
+        },
+		toolbar: {
+			show: true,
+			tools: {
+			  download: false
+			}
+		  },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "" + val.toLocaleString('ru-RU') + " руб."
+            }
+          }
+        }
+        };
+	 
+		var opt_profibility1 = {
+          series: [
+			{
+			  name: '{{profit_chart.name1|raw}}',
+			  color: '#44A7CB',
+			  data: [{{profit_chart.snt1|raw}}]
+			},
+			{
+			  name: '{{profit_chart.name2|raw}}',
+			  color: '#2E62A1',
+			  data: [{{profit_chart.snt2|raw}}]
+			},
+
+		],
+        chart: {
+          type: 'bar',
+          height: 250,
+		  parentHeightOffset: 0
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '50%',
+            endingShape: 'rounded' 
+          },
+        },
+        dataLabels: {
+          enabled: true
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+		  show: true,
+          categories: [{{profit_chart.group|raw}}],//'Gross Margin','Operating Profit','EBITDA','Net Profit'
+        },
+		
+        legend: {
+          position: 'right',
+          offsetY: 40
+        },
+        //yaxis: {
+			//show: false,
+		//	min: 0
+		//},
+		//colors: ['#2E62A1', '#44A7CB', '#6FA8CD' ],
+        fill: {
+          opacity: 1
+        },
+		toolbar: {
+			show: true,
+			tools: {
+			  download: false
+			}
+		  },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "" + val + " %"
+            }
+          }
+        }
+        };
+		
+		var opt_profibility2 = {
+          series: [
+			{
+			  name: '{{profit_chart.namevs1|raw}}',
+			  color: '#f7bf47',
+			  data: [{{profit_chart.diffvs1|raw}}]
+			},
+			{
+			  name: '{{profit_chart.namevs2|raw}}',
+			  color: '#F0A44D',
+			  data: [{{profit_chart.diffvs2|raw}}]
+			},
+
+		],
+        chart: {
+          type: 'bar',
+          height: 250,
+		  parentHeightOffset: 0
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '50%',
+            endingShape: 'rounded' 
+          },
+        },
+        dataLabels: {
+          enabled: true
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+		  show: true,
+          categories: [{{profit_chart.groupvs|raw}}], 
+        },
+		
+        legend: {
+          position: 'right',
+          offsetY: 40
+        },
+        //yaxis: {
+			//show: false,
+		//	min: 0
+		//},
+		//colors: ['#2E62A1', '#44A7CB', '#6FA8CD' ],
+        fill: {
+          opacity: 1
+        },
+		toolbar: {
+			show: true,
+			tools: {
+			  download: false
+			}
+		  },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "" + val + ""
+            }
+          }
+        }
+        };
+		
+		var opt_profibility3 = {
+          series: [
+			{
+			  name: '{{profit_chart.namevs1|raw}}',
+			  color: '#f7bf47',
+			  data: [{{profit_chart.diffvs1|raw}}]
+			},
+			{
+			  name: '{{profit_chart.namevs3|raw}}',
+			  color: '#F0A44D',
+			  data: [{{profit_chart.diffvs3|raw}}]
+			},
+
+		],
+        chart: {
+          type: 'bar',
+          height: 250,
+		  parentHeightOffset: 0
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '50%',
+            endingShape: 'rounded' 
+          },
+        },
+        dataLabels: {
+          enabled: true
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+		  show: true,
+          categories: [{{profit_chart.groupvs|raw}}], 
+        },
+		
+        legend: {
+          position: 'right',
+          offsetY: 40
+        },
+        //yaxis: {
+			//show: false,
+		//	min: 0
+		//},
+		//colors: ['#2E62A1', '#44A7CB', '#6FA8CD' ],
+        fill: {
+          opacity: 1
+        },
+		toolbar: {
+			show: true,
+			tools: {
+			  download: false
+			}
+		  },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "" + val + ""
+            }
+          }
+        }
+        };
+		
+	//capital------------------
+	var opt_capital1 = {
+          series: [
+			{
+			  name: '{{profit_chart.name1|raw}}',
+			  color: '#44A7CB',
+			  data: [{{capital_chart.snt1|raw}}]
+			},
+			{
+			  name: '{{profit_chart.name2|raw}}',
+			  color: '#2E62A1',
+			  data: [{{capital_chart.snt2|raw}}]
+			}
+		],
+        chart: {
+          type: 'bar',
+          height: 250,
+		  parentHeightOffset: 0
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '50%',
+            endingShape: 'rounded' 
+          },
+        },
+        dataLabels: {
+          enabled: true
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+		  show: true,
+          categories: [{{capital_chart.group|raw}}],//'Gross Margin','Operating Profit','EBITDA','Net Profit'
+        },
+		
+        legend: {
+          position: 'right',
+          offsetY: 40
+        },
+        //yaxis: {
+			//show: false,
+		//	min: 0
+		//},
+		//colors: ['#2E62A1', '#44A7CB', '#6FA8CD' ],
+        fill: {
+          opacity: 1
+        },
+		toolbar: {
+			show: true,
+			tools: {
+			  download: false
+			}
+		  },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "" + val + " дн."
+            }
+          }
+        }
+    };
+	
+	var opt_capital2 = {
+          series: [
+			{
+			  name: '{{capital_chart.tl_name1|raw}}',
+			  color: '#3371AA',
+			  data: [{{capital_chart.tl_snt1|raw}}]
+			},
+			{
+			  name: '{{capital_chart.tl_name2|raw}}',
+			  color: '#C0458A',
+			  data: [{{capital_chart.tl_snt2|raw}}]
+			},
+			{
+			  name: '{{capital_chart.tl_name3|raw}}',
+			  color: '#EC8F43',
+			  data: [{{capital_chart.tl_snt3|raw}}]
+			}
+		],
+        chart: {
+          type: 'bar',
+          height: 250,
+		  stacked: true,
+		  parentHeightOffset: 0
+        },
+        plotOptions: {
+          bar: {
+            horizontal: true,
+            columnWidth: '50%',
+            endingShape: 'rounded' 
+          },
+        },
+        dataLabels: {
+          enabled: true
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+		  show: true,
+          categories: [{{capital_chart.tl_group|raw}}],//'Gross Margin','Operating Profit','EBITDA','Net Profit'
+        },
+		
+        legend: {
+		  position: 'top',
+          horizontalAlign: 'center',
+          offsetY: 10
+        },
+        //yaxis: {
+			//show: false,
+		//	min: 0
+		//},
+		//colors: ['#2E62A1', '#44A7CB', '#6FA8CD' ],
+        fill: {
+          opacity: 1
+        },
+		toolbar: {
+			show: true,
+			tools: {
+			  download: false
+			}
+		  },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "" + val + " дн."
+            }
+          }
+        }
+    };
+	
+	var opt_capital3 = {
+          series: [
+			{
+			  name: '{{profit_chart.name1|raw}}',
+			  color: '#44A7CB',
+			  data: [{{capital_chart.snt1Per100|raw}}]
+			},
+			{
+			  name: '{{profit_chart.name2|raw}}',
+			  color: '#2E62A1',
+			  data: [{{capital_chart.snt2Per100|raw}}]
+			}
+		],
+        chart: {
+          type: 'bar',
+          height: 250,
+		  parentHeightOffset: 0
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '50%',
+            endingShape: 'rounded' 
+          },
+        },
+        dataLabels: {
+          enabled: true
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+		  show: true,
+          categories: [{{capital_chart.groupPer100|raw}}],//'Gross Margin','Operating Profit','EBITDA','Net Profit'
+        },
+		
+        legend: {
+          position: 'right',
+          offsetY: 40
+        },
+        //yaxis: {
+			//show: false,
+		//	min: 0
+		//},
+		//colors: ['#2E62A1', '#44A7CB', '#6FA8CD' ],
+        fill: {
+          opacity: 1
+        },
+		toolbar: {
+			show: true,
+			tools: {
+			  download: false
+			}
+		  },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "" + val + " "
+            }
+          }
+        }
+    };
+	
+	var opt_capital4 = {
+          series: [
+			{
+			  name: '{{capital_chart.grossVSworkName1[0]|raw}}',
+			  color: '#f7bf47',
+			  data: [{{capital_chart.grossVSwork1|raw}}]
+			},
+			{
+			  name: '{{capital_chart.grossVSworkName1[1]|raw}}',
+			  color: '#F0A44D',
+			  data: [{{capital_chart.grossVSwork2|raw}}]
+			},
+
+		],
+        chart: {
+          type: 'bar',
+          height: 250,
+		  parentHeightOffset: 0
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '50%',
+            endingShape: 'rounded' 
+          },
+        },
+        dataLabels: {
+          enabled: true
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+		  show: true,
+          categories: [{{profit_chart.groupvs|raw}}], 
+        },
+		
+        legend: {
+          position: 'right',
+          offsetY: 40
+        },
+        //yaxis: {
+			//show: false,
+		//	min: 0
+		//},
+		//colors: ['#2E62A1', '#44A7CB', '#6FA8CD' ],
+        fill: {
+          opacity: 1
+        },
+		toolbar: {
+			show: true,
+			tools: {
+			  download: false
+			}
+		  },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "" + val + ""
+            }
+          }
+        }
+        };
+	//capital------------------
+	
+	//other--------------------
+	var opt_other1 = {
+          series: [
+			{
+			  name: '{{other_chart.name1|raw}}',
+			  color: '#44A7CB',
+			  data: [{{other_chart.snt1|raw}}]
+			},
+			{
+			  name: '{{other_chart.name2|raw}}',
+			  color: '#2E62A1',
+			  data: [{{other_chart.snt2|raw}}]
+			}
+		],
+        chart: {
+          type: 'bar',
+          height: 250,
+		  parentHeightOffset: 0
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '50%',
+            endingShape: 'rounded' 
+          },
+        },
+        dataLabels: {
+          enabled: true
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+		  show: true,
+          categories: [{{other_chart.group|raw}}],//'Gross Margin','Operating Profit','EBITDA','Net Profit'
+        },
+		
+        legend: {
+          position: 'right',
+          offsetY: 40
+        },
+        //yaxis: {
+			//show: false,
+		//	min: 0
+		//},
+		//colors: ['#2E62A1', '#44A7CB', '#6FA8CD' ],
+        fill: {
+          opacity: 1
+        },
+		toolbar: {
+			show: true,
+			tools: {
+			  download: false
+			}
+		  },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "" + val + " "
+            }
+          }
+        }
+    };
+	//other--------------------
+	
+	//funding--------------------
+	var opt_funding1 = {
+          series: [
+			{
+			  name: '{{funding_chart.name1|raw}}',
+			  color: '#44A7CB',
+			  data: [{{funding_chart.snt1|raw}}]
+			},
+			{
+			  name: '{{funding_chart.name2|raw}}',
+			  color: '#2E62A1',
+			  data: [{{funding_chart.snt2|raw}}]
+			}
+		],
+        chart: {
+          type: 'bar',
+          height: 250,
+		  parentHeightOffset: 0
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '50%',
+            endingShape: 'rounded' 
+          },
+        },
+        dataLabels: {
+          enabled: true
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+		  show: true,
+          categories: [{{funding_chart.group|raw}}],//'Gross Margin','Operating Profit','EBITDA','Net Profit'
+        },
+		
+        legend: {
+          position: 'right',
+          offsetY: 40
+        },
+        //yaxis: {
+			//show: false,
+		//	min: 0
+		//},
+		//colors: ['#2E62A1', '#44A7CB', '#6FA8CD' ],
+        fill: {
+          opacity: 1
+        },
+		toolbar: {
+			show: true,
+			tools: {
+			  download: false
+			}
+		  },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "" + val.toLocaleString('ru-RU')  + " "
+            }
+          }
+        }
+    };
+	
+	
+	var opt_funding2 = {
+          series: [{
+          name: '',
+          data: [{{funding_chart.Equity|raw}},null,{{funding_chart.NetDebt|raw}}]
+        }],
+        chart: {
+          type: 'bar',
+          height: 250,
+		  parentHeightOffset: 0,
+		  sparkline: {
+			enabled: true
+		  }
+        },
+        plotOptions: {
+          bar: {
+			distributed: true,
+            horizontal: false,
+            columnWidth: '75%',
+            endingShape: 'rounded'
+			
+          },
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+          categories: ['', '', '' ],
+        },
+		columnConfiguration : {
+			width: 100
+		},
+        yaxis: {
+			show: false,
+			min: 0,
+			max: Math.max(...[{{funding_chart.WorkingCapital|raw}}, {{funding_chart.OtherCapital|raw}}, {{funding_chart.Equity|raw}}, {{funding_chart.NetDebt|raw}}])
+		},
+		colors: ['#DF91A8','#222','#D8609A' ],
+        fill: {
+          opacity: 1
+        },
+		toolbar: {
+			show: true,
+			tools: {
+			  download: false
+			}
+		  },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "" + val.toLocaleString('ru-RU') + " руб."
+            }
+          }
+        }
+        };
+		
+		var opt_funding3 = {
+          series: [{
+          name: '',
+          data: [{{funding_chart.WorkingCapital|raw}},null,{{funding_chart.OtherCapital|raw}}]
+        }],
+        chart: {
+          type: 'bar',
+          height: 250,
+		  parentHeightOffset: 0,
+		  sparkline: {
+			enabled: true
+		  }
+        },
+        plotOptions: {
+          bar: {
+			distributed: true,
+            horizontal: false,
+            columnWidth: '75%',
+            endingShape: 'rounded'
+			
+          },
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+          categories: ['', '', '' ],
+        },
+		columnConfiguration : {
+			width: 100
+		},
+        yaxis: {
+			show: false,
+			min: 0,
+			max: Math.max(...[{{funding_chart.WorkingCapital|raw}}, {{funding_chart.OtherCapital|raw}}, {{funding_chart.Equity|raw}}, {{funding_chart.NetDebt|raw}}])
+		},
+		colors: ['#C0458A','#222','#8F3192' ],
+        fill: {
+          opacity: 1
+        },
+		toolbar: {
+			show: true,
+			tools: {
+			  download: false
+			}
+		  },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "" + val.toLocaleString('ru-RU') + " руб."
+            }
+          }
+        }
+        };
+	//funding--------------------
+		
+	//Sankey---------------------
+	/**/
+	var Sankey_data = {
+        nodes:  {{Sankey.balance.nodes|raw}},
+        edges: {{Sankey.balance.edges|raw}},
+      };
+	//console.log(Sankey_data);
+	var Sankey_graphOptions = {
+			  //width: 100,
+			  //height: 100,
+			  canvasStyle: 'border: 1px solid #caced0',
+			  spacing: 80,
+			  nodeWidth: 10,
+			  nodeBorderWidth: 1,
+			  nodeBorderColor: null,
+			  onNodeClick: undefined,
+			  edgeOpacity: 0.4,
+			  edgeGradientFill: true,
+			  enableTooltip: true,
+			  tooltipId: 'sankey-tooltip-container',
+			  tooltipBorderColor: '#BCBCBC',
+			  tooltipBGColor: '#FFFFFF',
+
+			  fontSize: '10px',
+			  fontFamily: '',
+			  fontWeight: 100,
+			  fontColor: '#212121',
+			}
+	
+	/*{
+		nodeWidth: 10,
+		fontFamily: 'Quicksand, sans-serif',
+		fontWeight: 300,
+		height: 350,
+	}*/ 
+
+	
+	//Sankey---------------------
+	//console.log('>>');
+		
+</script>

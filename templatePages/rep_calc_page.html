@@ -1,0 +1,109 @@
+<style type="text/css">
+.card{box-shadow: none;}
+</style><!---->
+<!-- CHART -->
+
+<script src="/assets/vendor/libs/highcharts/highcharts.js"></script>
+<script src="/assets/vendor/libs/highcharts/highcharts-more.js"></script>
+<script src="/assets/vendor/libs/highcharts/exporting.js"></script>
+<script src="/assets/vendor/libs/highcharts/export-data.js"></script>
+<script src="/assets/vendor/libs/highcharts/accessibility.js"></script>
+
+<div class="content-wrapper">
+	<!-- Content -->
+	<div class="card p-4">
+		<div class="card-header row p-2">
+			<div class="head-label text-start col-6" style="margin: 5px 0 0 -5px;">
+				<h5 class="card-title mb-0">Расчет инвестиционных проектов </h5>
+				<small class="text-muted" >{{comp_name | raw}}</small>
+			</div>
+			 <div class="col" id="id-select-content">
+			
+			 </div>
+			 <div class="col-2 text-end" >
+				<button class="btn btn-secondary  btn-label-primary me-2 waves-effect waves-light"  type="button" onClick="getContent('#id-table-content'); return false;">
+					<span>
+						<span class="ti ti-reload me-sm-1"></span>
+						<span class="d-none d-sm-inline-block">Обновить </span>
+					</span>
+				</button>
+			 </div>
+		</div>
+
+		<div class="divider mt-0 text-start">
+			<div class="divider-text"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-calculator"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 3m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M8 7m0 1a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1v1a1 1 0 0 1 -1 1h-6a1 1 0 0 1 -1 -1z" /><path d="M8 14l0 .01" /><path d="M12 14l0 .01" /><path d="M16 14l0 .01" /><path d="M8 17l0 .01" /><path d="M12 17l0 .01" /><path d="M16 17l0 .01" /></svg></div>
+		 </div>
+		 <div class="w-100"></div>
+		 <div class="mb-3 row" style="min-height: 300px; min-width:120px;" id="id-table-content" pro-id="{{id|raw}}" pro-url="/api/v1/htm/pro/rep/calc/page/content">
+		 
+		 </div>
+
+	</div>
+
+	  <!--/ DataTable with Buttons -->
+</div>
+<!-- / Layout wrapper -->
+		
+<script>
+	//start after load page--
+  $(function() {
+	getContent('#id-table-content');
+	
+  });
+
+  
+ function getContent(a){
+	var frm = $(a);
+	
+	if(frm){
+		frm.block({
+			message:
+			  '<div class="sk-wave mx-auto"><div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div></div>',
+			timeout: 0,
+			css: {
+			  backgroundColor: 'transparent',
+			  border: '0'
+			},
+			overlayCSS: {
+			  opacity: 0.25
+			}
+		  });
+		var sid = frm.attr('pro-id');
+		var url = frm.attr('pro-url');
+		
+		var $arInptVal = { xparam1: {{id|raw}}, xparam3: {{id_dvBal|raw}}, xparam2: {{id_dvProfit|raw}} };
+	
+		//console.log($arInptVal);
+		
+		$.ajax({
+			url:  url+'/'+sid,
+			method: 'post',
+			dataType: 'html',
+			data: $arInptVal,
+			success: function(data){
+				if (data.length >150 ){
+					frm.empty();
+					frm.append(data);
+
+				} else { //console.log(data.Error); 
+					toastr.options = {"timeOut": 0, "extendedTimeOut": 0};
+					toastr.warning(data.Error+'<br /><br />	<button type="button" class="btn btn-label-warning">Закрыть</button>', 'Ошибка '+data.code.toString()+'!' );
+					toastr.options = { "timeOut": 5000, "extendedTimeOut": 1000 };
+				}
+				frm.unblock();
+			},
+				error: function (jqXHR, exception) {errorHook (jqXHR, exception);}
+		});
+			
+	
+	}
+	return false;
+ }
+ 
+
+</script>
+<!--<script src="/assets/js/tables-datatables-basic.js"></script> -->
+
+
+
+

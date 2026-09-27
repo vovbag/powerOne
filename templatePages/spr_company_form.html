@@ -1,0 +1,46 @@
+<div class="offcanvas-header border-bottom">
+  <h5 class="offcanvas-title" id="exampleModalLabel">{{ make | raw }} оганизацию</h5>
+  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+</div>
+
+<div class="offcanvas-body flex-grow-1">
+  <form class="add-new-record pt-0 row g-2 fv-plugins-bootstrap5 fv-plugins-framework" id="form-add-new-record" onsubmit="return false" novalidate="novalidate" pro-url="/api/v1/json/pro/spr/Company/upd/{{ id | raw }}">
+	<input type="hidden" id="x1id_comp" class="form-control dt-full-name" name="x1id_comp" value="{{ id | raw}}">
+	<div class="col-sm-12 fv-plugins-icon-container">
+	  <label class="form-label" for="x2Name">Наименование*</label>
+	  <div class="input-group input-group-merge has-validation">
+		<span id="x2Name2" class="input-group-text"><i class="ti ti-building-skyscraper"></i></span>
+		<input type="text" id="x2Name" class="form-control dt-full-name" name="x2Name" placeholder="ООО Скайнет" aria-label="ООО "Скайнет"" aria-describedby="x2Name2" value="{{ comp_name | raw }}">
+	  </div><div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+	</div>
+	<div class="col-sm-12 fv-plugins-icon-container">
+	  <label class="form-label" for="x4INN">ИНН</label>
+	  <div class="input-group input-group-merge has-validation">
+		<span id="x4INN2" class="input-group-text"><i class="ti ti-dialpad"></i></span>
+		<input type="text" class="form-control dt-date flatpickr-input" id="x4INN" name="x4INN" aria-describedby="x4INN2" placeholder="1234567890" aria-label="1234567890" value="{{ comp_INN | raw }}">
+	  </div><div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+	</div>
+	
+	<div class="col-sm-12 fv-plugins-icon-container">
+	  <label class="form-label" for="x7id_vid">Вид деятельности</label>
+	  <div class="input-group input-group-merge has-validation">
+		<span id="x7id_vid2" class="input-group-text"><i class="ti ti-briefcase"></i></span>
+		<input type="text" id="x7id_vid" name="x7id_vid" class="form-control dt-post" placeholder="Разработка ПО" aria-label="Разработка ПО" aria-describedby="x7id_vid2" value="{{ comp_Vid | raw }}">
+	  </div><div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+	</div>
+	
+	<div class="col-sm-12 fv-plugins-icon-container">
+	  <label class="form-label" for="x3Descr">Описание</label>
+	  <div class="input-group input-group-merge has-validation">
+		<span class="input-group-text"><i class="ti ti-script"></i></span>
+		<textarea class="form-control" id="x3Descr" rows="6" name="x3Descr" class="form-control dt-descr" placeholder="" aria-label="">{{ descr | raw }}</textarea>
+	  </div><div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+	  <div class="form-text"> </div>
+	</div>
+	
+	<div class="col-sm-12">
+	  <button type="submit" class="btn btn-primary data-submit me-sm-3 me-1 waves-effect waves-light" onclick="saveForm('#form-add-new-record');return false;">{{ make | raw }}</button>
+	  <button type="reset" class="btn btn-outline-secondary waves-effect" data-bs-dismiss="offcanvas">Закрыть</button>
+	</div>
+  <input type="hidden"></form>
+</div>

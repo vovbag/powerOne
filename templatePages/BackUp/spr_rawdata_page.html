@@ -1,0 +1,145 @@
+  <!-- Content wrapper -->
+  <div class="content-wrapper">
+	<!-- Content -->
+	
+	<div class="card p-4">
+		<div class="card-header row p-2">
+			<div class="head-label text-start col-6" style="margin: 5px 0 0 -5px;">
+				<h5 class="card-title mb-0">Исходные данные</h5>
+				<small class="text-muted" >{{item[0].comp_name | raw}}</small>
+			</div>
+		</div>
+
+		<div class="divider mt-0 text-start">
+			<div class="divider-text"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-database"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6m-8 0a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /><path d="M4 6v6a8 3 0 0 0 16 0v-6" /><path d="M4 12v6a8 3 0 0 0 16 0v-6" /></svg></div>
+		 </div>
+		 
+		<div class="mb-3 row">
+			<div class="col-xl-9 col-sm-8 mb-4">
+				Для загрузки файлов используйте шаблоны в формате .xls:
+				
+			</div>
+			<div class="col-xl-1 col-sm-4 mb-4">
+				<form action="/json/api/uploadExcel" class="dropzone needsclick bordered" id="dropzone-basic">
+					<input type="hidden" id="xid" name="xid" value="{{ id | raw }}" />
+					<div class="mb-3 mt-0">
+						<label for="xparam1" class="form-label">Периодичность*</label>
+						<select id="xparam1" class="form-select" name="xparam1" >
+							<option value="0">Месяц</option>
+							<option value="1" selected>Квартал</option>
+							<option value="2">Полугодие</option>
+							<option value="3">Год</option>
+						  </select>
+											  
+					  </div>
+					  
+					<div class="mb-3 row">
+					<label for="html5-month-input" class="form-label">Начало периода</label>
+					<div class="col-md-10">
+					  <input class="form-control" type="month" value="2023-06" id="xparam2" name="xparam2">
+					</div>
+				  </div>
+				  <div class="dz-message needsclick">
+					Перенесите файл сюда или нажите для загрузки
+					<span class="note needsclick">(Загружайются файлы только в формате MS Excel: 
+					<span class="fw-medium">xls</span> и <span class="fw-medium">xlsx</span>)</span>
+				  </div>
+				  <div class="fallback">
+					<input name="file" type="file" />
+				  </div>
+				  
+				</form>
+			</div>
+		</div>
+		<div class="mb-3 row">
+		{% for item in items %}
+				<div class="col-xl-3 col-sm-6 mb-4">
+                  <div class="card h-100">
+						<!-- header -->
+                     <div class="card-header d-flex justify-content-between pb-0">
+                      <div class="card-title mb-0 pb-2">
+                        <h5 class="mb-0">{{item.name | raw}}</h5>
+                        <small class="text-muted" >{{item.comp_name | raw}}</small>
+                      </div>
+                      <div class="dropdown">
+                        <div class="block" style=" width: 135px; display: flex;">
+							<div class="d-inline-block">
+								<a href="#" class="btn btn-secondary btn-icon item-edit" onclick="openDetail({{item.id}});return false;" tooltip style="width:125px;">
+									Подробнее <span class="text ti ti-corner-right-down ti-md"></span>
+								</a>
+							</div>
+						</div>
+                      </div>
+                    </div> <!-- header  <div class="divider">
+                        <div class="divider-text">V</div>
+                      </div>-->
+					<hr class="m-1">
+					
+                    <div class="card-body pt-1">
+						<h5 class="mb-3 mt-1">{{item.dataType | raw}}</h5>
+						<!--<div class="d-flex justify-content-between gap-0">
+							<div class="badge bg-label-success rounded p-2"><i class="ti ti-chart-bar ti-sm"></i></div>
+							  <div class="d-flex justify-content-between w-100 flex-wrap">
+								<h6 class="mb-0 ms-2 mt-2 d-inline-block text-truncate" style="max-width: 165px;">{{item.nameParam | raw}}</h6>
+								<div class="d-flex">
+								  <p class="mb-0 fw-medium mt-2" id="id_resRasch_Prib_8">{{item.val | raw}}</p>
+								</div>
+							  </div>
+						  </div>-->
+					  
+                      <div class="d-flex justify-content-between align-items-center mb-2 gap-3 pt-1 mt-2"><!-- time -->
+                        <div class="row mb-3 g-3">
+							<div class="col-6">
+							  <div class="d-flex">
+								<div class="avatar flex-shrink-0 me-2">
+								  <span class="avatar-initial rounded bg-label-primary"><i class="ti ti-calendar-event ti-md"></i></span>
+								</div>
+								<div style="width: 120px;">
+								  <h6 class="mb-0 text-nowrap">{{item.cnt | raw}}</h6>
+								  <small>Кол-во периодов</small>
+								</div>
+							  </div>
+							</div>
+							<div class="col-6">
+							  <div class="d-flex ms-2">
+								<div class="avatar flex-shrink-0 me-2">
+								  <span class="avatar-initial rounded bg-label-primary"><i class="ti ti-clock ti-md"></i></span>
+								</div>
+								<div>
+								  <h6 class="mb-0 text-nowrap">{{item.pt | raw}}</h6>
+								  <small>Длительность</small>
+								</div>
+							  </div>
+							</div>
+						  </div>
+                      </div><!-- time -->
+
+                      <div class="d-flex justify-content-between gap-3">
+                        <p class="mb-0">{{item.stdate | raw}}</p>
+                        <span class="text-muted">{{item.enddate | raw}}</span>
+                      </div>
+                      <div class="d-flex align-items-center mt-1">
+                        <div class="progress w-100" style="height: 8px">
+                          <div class="progress-bar bg-info" style="width: {{item.prc | raw}}%" role="progressbar" aria-valuenow="{{item.prc | raw}}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+				<!-- 1cardf -->
+			{% endfor %}
+		</div><!-- row -->
+	</div>
+<!-- Overlay -->
+</div>
+<!-- CHART -->
+
+<script>
+	function openDetail(sid){
+		window.location.href='/api/v1/q/htm/pro/spr/rawdata/page/variant/'+sid
+	}
+	
+	function afterSaveMainForm(sid){
+		openDetail(sid);
+	}
+</script>

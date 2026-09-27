@@ -1,0 +1,129 @@
+<link rel="stylesheet" href="/assets/vendor/libs/bootstrap-select/bootstrap-select.css " />
+<style type="text/css">.dz-message:before{top: 14rem; }</style> 
+<div class="offcanvas-header border-bottom">
+  <h5 class="offcanvas-title" id="exampleModalLabel">Загрузить данные {{ make | raw }}</h5>
+  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" id="id_btn_close"></button>
+</div>
+
+<div class="offcanvas-body flex-grow-1">
+
+		<div class="card-body">
+		 <!-- <form action="/htm/api/uploadExcel" class="dropzone needsclick dz-clickable" id="dropzone-basic" method="POST" >
+		
+		  
+			<div class="dz-message needsclick" id="id_drop_zone">
+			  Перенесите файл сюда или нажите для загрузки
+			  <span class="note needsclick">(Загружайются файлы только в формате MS Excel: 
+				<span class="fw-medium">xls</span> и <span class="fw-medium">xlsx</span>)</span>
+			</div>
+			
+			 <button type="submit" class="btn btn-primary data-submit me-sm-3 me-1 waves-effect waves-light"  id="sendButton" >загрузить</button>onsubmit="event.preventDefault();"
+		  </form>-->
+
+		  <form action="/json/api/uploadExcel" class="dropzone needsclick" id="dropzone-basic">
+		    <input type="hidden" id="xid" name="xid" value="{{ id | raw }}" />
+			<div class="mb-3 mt-0">
+				<label for="xparam1" class="form-label">Периодичность*</label>
+				<select id="xparam1" class="form-select" name="xparam1" >
+					<option value="0">Месяц</option>
+					<option value="1" selected>Квартал</option>
+					<option value="2">Полугодие</option>
+					<option value="3">Год</option>
+				  </select>
+									  
+			  </div>
+			  
+			<div class="mb-3 row">
+				<label for="html5-month-input" class="form-label">Начало периода</label>
+				<div class="col-md-10">
+				  <input class="form-control" type="month" value="2023-06" id="xparam2" name="xparam2">
+				</div>
+			  </div>
+			  <div class="dz-message needsclick">
+				Перенесите файл сюда или нажите для загрузки
+				<span class="note needsclick">(Загружайются файлы только в формате MS Excel: 
+				<span class="fw-medium">xls</span> и <span class="fw-medium">xlsx</span>)</span>
+			  </div>
+			  <div class="fallback">
+				<input name="file" type="file" />
+			  </div>
+			  
+			</form>
+		  
+		</div>
+
+
+
+  <!-- template-container -->
+  <div id="template-container" style="display: none;"><div class="dz-preview dz-file-preview">
+	<div class="dz-details">
+	  <div class="dz-thumbnail">
+		<img data-dz-thumbnail>
+		<span class="dz-nopreview">No preview</span>
+		<div class="dz-success-mark"></div>
+		<div class="dz-error-mark"></div>
+		<div class="dz-error-message"><span data-dz-errormessage></span></div>
+		<div class="progress">
+		  <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-dz-uploadprogress></div>
+		</div>
+	  </div>
+	  <div class="dz-filename" data-dz-name></div>
+	  <div class="dz-size" data-dz-size></div>
+	  </div>
+	</div>
+  </div>
+  <!-- template-container -->
+</div>
+<script>
+	Dropzone.options.dropzoneBasic = {
+		  previewTemplate: document.querySelector('#template-container').innerHTML,
+		  parallelUploads: 1,
+		  maxFilesize: 550000,
+		  addRemoveLinks: true,
+		  maxFiles: 1,
+		  init: function() {
+			this.on("addedfile", file => {
+			  console.log("A file has been added");
+				//$("#dropzone-basic").submit();
+			});
+			
+			this.on("success", function(files, response) {
+			  var data = response;
+			  if (!data.msg){ 
+				  if (data.data.msg) {data = data.data;}
+				  else {
+					if (data.message){data.set('msg',data.message);data.set('code',1);}else{data.set('msg','ok');data.set('code',1);}
+				  }
+			  }
+			  toastr.success(data.msg);
+			  $('#id_btn_close').trigger('click');
+			  getTable('#id-table-content');
+			});
+			this.on("error", function(files, response) {
+				var data = []; 
+				if (typeof response == "string") {
+					data = new Map([
+					  ['code', 1],
+					  ['msg', response]
+					]); 
+				  } else {data = response;}//$.parseJSON(response)
+				if (!data.msg){if (data.message){data.set('msg',data.message);data.set('code',1);}else{data.set('msg','Неизвестная ошибка');data.set('code',1);}}
+				
+				$('.dz-error-message').empty(); 
+				$('.dz-error-message').text(data.msg);
+
+				toastr.options = {"timeOut": 0, "extendedTimeOut": 0};
+				toastr.warning(data.msg+'<br /><br /><button type="button" class="btn btn-label-warning">Закрыть</button>', 'Ошибка: '+data.code.toString() );
+				toastr.options = { "timeOut": 5000, "extendedTimeOut": 1000 };
+			});
+		  }
+	  };
+	  Dropzone.discover();
+	  
+	
+
+</script>
+<!--<script src="/assets/js/forms-file-upload.js"></script> -->
+
+
+

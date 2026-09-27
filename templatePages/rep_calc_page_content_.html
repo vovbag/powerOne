@@ -1,0 +1,345 @@
+<style type="text/css">.odd{background-color: #ddd !impotant;}.even{padding-left:10px !impotant;}</style>
+<style type="text/css">.tg-0lax{vertical-align: middle;  text-align: center;}</style>
+<div class="min-h-full w-full" id="artifacts-component-root-react">
+  <div class="space-y-6">
+    <div class="bg-card text-card-foreground rounded-xl border shadow">
+      <div class="flex flex-col space-y-1.5 p-6">
+        <h3 class="font-semibold leading-none tracking-tight">Параметры проекта цифровой трансформации</h3>
+      </div>
+      <div class="p-6 pt-0">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="space-y-4">
+            <h3 class="font-medium">Инвестиции</h3>
+            <div class="flex items-center">
+              <label class="w-1/2 capitalize">software:</label>
+              <input class="w-1/2 p-2 border rounded" type="number" value="0" id="software">
+            </div>
+            <div class="flex items-center">
+              <label class="w-1/2 capitalize">hardware:</label>
+              <input class="w-1/2 p-2 border rounded" type="number" value="0" id="hardware">
+            </div>
+            <div class="flex items-center">
+              <label class="w-1/2 capitalize">consulting:</label>
+              <input class="w-1/2 p-2 border rounded" type="number" value="0" id="consulting">
+            </div>
+            <div class="flex items-center">
+              <label class="w-1/2 capitalize">training:</label>
+              <input class="w-1/2 p-2 border rounded" type="number" value="0" id="training">
+            </div>
+            <div class="flex items-center">
+              <label class="w-1/2 capitalize">other:</label>
+              <input class="w-1/2 p-2 border rounded" type="number" value="0" id="other">
+            </div>
+          </div>
+          <div class="space-y-4">
+            <h3 class="font-medium">Текущие показатели</h3>
+            <div class="flex items-center">
+              <label class="w-1/2 capitalize">annualRevenue:</label>
+              <input class="w-1/2 p-2 border rounded" type="number" value="{{Revenue|raw}}" id="annualRevenue">
+            </div>
+            <div class="flex items-center">
+              <label class="w-1/2 capitalize">annualCosts:</label>
+              <input class="w-1/2 p-2 border rounded" type="number" value="{{Overheads|raw}}" id="annualCosts">
+            </div>
+            <div class="flex items-center">
+              <label class="w-1/2 capitalize">employeesCount:</label>
+              <input class="w-1/2 p-2 border rounded" type="number" value="0" id="employeesCount">
+            </div>
+            <div class="flex items-center">
+              <label class="w-1/2 capitalize">averageSalary:</label>
+              <input class="w-1/2 p-2 border rounded" type="number" value="0" id="averageSalary">
+            </div>
+          </div>
+          <div class="space-y-4">
+            <h3 class="font-medium">Экономические параметры</h3>
+            <div class="flex items-center">
+              <label class="w-1/2">Ставка дисконтирования (%):</label>
+              <input class="w-1/2 p-2 border rounded" type="number" value="12" id="interestRate">
+            </div>
+            <div class="flex items-center">
+              <label class="w-1/2">Инфляция (%):</label>
+              <input class="w-1/2 p-2 border rounded" type="number" value="4" id="inflationRate">
+            </div>
+          </div>
+          <div class="space-y-4">
+            <h3 class="font-medium">Прогнозируемые эффекты (%)</h3>
+            <div class="flex items-center">
+              <label class="w-1/2 capitalize">costReduction:</label>
+              <input class="w-1/2 p-2 border rounded" type="number" value="15" id="costReduction">
+            </div>
+            <div class="flex items-center">
+              <label class="w-1/2 capitalize">revenueIncrease:</label>
+              <input class="w-1/2 p-2 border rounded" type="number" value="10" id="revenueIncrease">
+            </div>
+            <div class="flex items-center">
+              <label class="w-1/2 capitalize">productivityGrowth:</label>
+              <input class="w-1/2 p-2 border rounded" type="number" value="20" id="productivityGrowth">
+            </div>
+          </div>
+        </div>
+        <!--<button class="mt-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Рассчитать показатели</button>-->
+		<button class="btn btn-primary  btn-label-primary me-2 waves-effect waves-light"  type="button" onClick="calculateMetrics(); return false;">
+			<span>
+				<span class="ti ti-reload me-sm-1"></span>
+				<span class="d-none d-sm-inline-block">Рассчитать показатели </span>
+			</span>
+		</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="card visible" id="id_calcResult">
+  <div class="flex flex-col space-y-1.5 p-6">
+    <h3 class="font-semibold leading-none tracking-tight">Результаты расчета</h3>
+  </div>
+  <div class="p-6 pt-0">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="space-y-4">
+        <h3 class="font-medium">Основные показатели</h3>
+        <div>
+          <p>
+            <strong>Общие инвестиции:</strong> 125&nbsp;₽
+          </p>
+          <p>
+            <strong>NPV:</strong> 4&nbsp;265&nbsp;928&nbsp;₽
+          </p>
+          <p>
+            <strong>ROI:</strong> 4&nbsp;239&nbsp;140,00&nbsp;%
+          </p>
+          <p>
+            <strong>Срок окупаемости:</strong> 1 лет
+          </p>
+          <p>
+            <strong>Индекс прибыльности (PI):</strong> 34128.43
+          </p>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <h3 class="font-medium">Дополнительные показатели</h3>
+        <div>
+          <p>
+            <strong>Годовой эффект:</strong> 1&nbsp;324&nbsp;763&nbsp;₽
+          </p>
+          <p>
+            <strong>Реальная ставка дисконтирования:</strong> 7,69&nbsp;%
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-6 p-4 bg-gray-50 rounded">
+      <h3 class="font-medium mb-2">Интерпретация результатов:</h3>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>NPV положительный - проект рекомендуется к реализации</li>
+        <li>ROI превышает ставку дисконтирования - хорошая доходность</li>
+        <li>Проект окупается за 1 лет</li>
+        <li>PI больше 1 - проект создает стоимость</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<script>
+	var nf = new Intl.NumberFormat("ru", {
+	  //style: "currency",
+	  style: "decimal",
+	  //currency: "ru",
+	  maximumFractionDigits: 0,
+	  minimumFractionDigits:0,
+	  //roundingIncrement: 5,
+	  roundingMode: "halfEven"
+	});
+
+	var np = new Intl.NumberFormat("ru", {
+	  //style: "currency",
+	  style: "percent",
+	  //currency: "ru",
+	  maximumFractionDigits: 2,
+	  minimumFractionDigits:2,
+	  //roundingIncrement: 5,
+	  roundingMode: "halfEven"
+	});
+
+	var Operating_Profit = {{Operating_Profit|raw}};
+	var Revenue = {{Revenue|raw}};
+	var Operating_Cash_Flow = {{Operating_Cash_Flow|raw}};
+	var Gross_Margin_prc = {{Gross_Margin_prc|raw}};
+	var COGS = {{COGS|raw}};
+	var Overheads = {{Overheads|raw}};
+	var Net_Cash_Flow = {{Net_Cash_Flow|raw}};
+	var workCapitalPer100 = {{workCapitalPer100|raw}};
+	var cntDay ={{cntDay|raw}};
+
+	var res1=0, res2=0, res3=0.0, res4=0.0, res5=0, res6=0, res7=0;
+	var res11=0, res22=0, res33=0, res44=0;//, res55=0, res66=0, res77=0;
+
+	console.log(1);
+
+	//--calc--------------------->
+	let jsonResult = {};
+	let inputs ={
+				// Базовые параметры проекта
+				projectName: '',
+				duration: 5,
+				
+				// Инвестиции по категориям
+				investments: {
+				  software: 0,
+				  hardware: 0,
+				  consulting: 0,
+				  training: 0,
+				  other: 0
+				},
+				
+				// Экономические параметры
+				interestRate: 12,
+				inflationRate: 4,
+				taxRate: 20,
+				
+				// Прогнозируемые эффекты (% от текущих показателей)
+				effects: {
+				  costReduction: 15,
+				  revenueIncrease: 10,
+				  productivityGrowth: 20
+				},
+				
+				// Текущие показатели компании
+				currentMetrics: {
+				  annualRevenue: 0,
+				  annualCosts: 0,
+				  employeesCount: 0,
+				  averageSalary: 0
+				}
+			  };
+	
+
+	$(function() {
+		console.log(2);
+
+		$( "input" ).on( "change",   function() {
+		  getSelect($(this)); updAll();
+		});
+
+		/*$('input').each(function (index, element) {
+			// input — селектор функции each()
+			// index — текущий индекс
+			// element — ссылка на текущий элемент
+			getSelect($(element));
+		    //console.log('Индекс элемента: ' + index + '; класс элемента: ' +$(element).attr('class'));
+	   }); */
+	   updAll();
+	});
+
+	function getSelect(a){
+
+	}
+
+	function updAll(){
+		console.log(4);
+		
+		$('#id_calcResult').remoClass('visible');
+		$('#id_calcResult').addClass('invisible');
+		$('input').each(function() {
+			jsonResult[$(this).attr('id')] = $(this).val(); // Привязываем значения к именам полей
+		});
+		console.log(jsonResult);
+
+	}
+
+	function calculateMetrics(){
+		    // Общие инвестиции
+		const totalInvestment = jsonResult.software + jsonResult.hardware + jsonResult.consulting + jsonResult.training + jsonResult.other;
+		
+		// Расчет ежегодных эффектов
+		const annualEffects = {
+		  costSavings: jsonResult.annualCosts * (jsonResult.costReduction / 100),
+		  revenueGain: jsonResult.annualRevenue * (jsonResult.revenueIncrease / 100),
+		  productivityGain: jsonResult.employeesCount * jsonResult.averageSalary * 
+			(jsonResult.productivityGrowth / 100)
+		};
+
+		// Расчет денежных потоков
+		const realDiscountRate = (1 + jsonResult.interestRate/100) / (1 + jsonResult.inflationRate/100) - 1;
+		
+		/*const cashFlows = Array(inputs.duration).fill(0).map((_, year) => {
+		  const totalEffect = annualEffects.costSavings + annualEffects.revenueGain + annualEffects.productivityGain;
+		  const taxEffect = totalEffect * (inputs.taxRate / 100);
+		  return totalEffect - taxEffect;
+		}); */
+		const cashFlows = [];
+		for (let year = 0; year < inputs.duration; year++) {
+			// Считаем общий эффект
+			const totalEffect = annualEffects.costSavings 
+							 + annualEffects.revenueGain 
+							 + annualEffects.productivityGain;
+			
+			// Вычитаем налоги
+			const taxEffect = totalEffect * (inputs.taxRate / 100);
+			
+			// Добавляем чистый денежный поток в массив
+			cashFlows.push(totalEffect - taxEffect);
+		}
+
+		// NPV
+		let npv = -totalInvestment; // Начальные инвестиции берем с минусом
+		let accumulatedValue = 0;   // Накопленная сумма дисконтированных потоков
+
+		// Проходим по всем денежным потокам
+		for (let year = 0; year < cashFlows.length; year++) {
+			// Берем денежный поток за текущий год
+			let cashFlow = cashFlows[year];
+			
+			// Рассчитываем знаменатель для дисконтирования
+			let discountDenominator = Math.pow(1 + realDiscountRate, year + 1);
+			
+			// Дисконтируем денежный поток и добавляем к накопленной сумме
+			accumulatedValue += cashFlow / discountDenominator;
+		}
+
+		// Итоговый NPV - это начальные инвестиции плюс сумма дисконтированных потоков
+		npv = -totalInvestment + accumulatedValue;
+
+		// ROI
+		let totalReturns = 0;
+
+		// Проходим по всем денежным потокам и суммируем их
+		for (let i = 0; i < cashFlows.length; i++) {
+			totalReturns += cashFlows[i];
+		}
+		const roi = (totalReturns - totalInvestment) / totalInvestment * 100;
+
+		// Срок окупаемости
+		let payback = 0;
+		let cumulativeCF = -totalInvestment;
+		for (let i = 0; i < cashFlows.length; i++) {
+		  cumulativeCF += cashFlows[i];
+		  if (cumulativeCF >= 0) {
+			payback = i + 1;
+			break;
+		  }
+		}
+
+		// PI (Индекс прибыльности)
+		const pi = 1 + npv / totalInvestment;
+
+		setResults({
+		  totalInvestment,
+		  npv,
+		  roi,
+		  payback,
+		  pi,
+		  annualEffect: annualEffects.costSavings + annualEffects.revenueGain + annualEffects.productivityGain,
+		  realDiscountRate: realDiscountRate * 100
+		});
+		
+	
+	
+		$('#id_calcResult').remoClass('invisible');
+		$('#id_calcResult').addClass('visible');
+		
+	}
+
+</script>

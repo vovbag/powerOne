@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="/assets/vendor/libs/bootstrap-select/bootstrap-select.css " />
+
+<div class="offcanvas-header border-bottom">
+  <h5 class="offcanvas-title" id="exampleModalLabel">{{ make | raw }} вариант</h5>
+  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+</div>
+
+<div class="offcanvas-body flex-grow-1">
+  <form class="add-new-record pt-0 row g-2 fv-plugins-bootstrap5 fv-plugins-framework" id="form-add-new-record" onsubmit="return false" novalidate="novalidate" pro-url="/api/v1/json/pro/spr/rawdata/upd/{{ id | raw }}">
+
+	<div class="col-sm-12 fv-plugins-icon-container">
+	  <label class="form-label" for="Name">Наименование*</label>
+	  <div class="input-group input-group-merge has-validation">
+		<span id="Name2" class="input-group-text"><i class="ti ti-versions"></i></span>
+		<input type="text" id="Name" class="form-control dt-full-name" name="Name" placeholder="Данные за 2023г" aria-label="Данные за 2023г" aria-describedby="Name2" value="{{ name | raw }}">
+	  </div><div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+	</div>
+	
+	
+	
+	<div class="mb-3 mt-3">
+	<label for="xparam1" class="form-label">Организация*</label>
+	<!--<select class="form-select" id="exampleFormControlSelect1" aria-label="Организация">
+	  <option selected="">Выберите организацию</option>
+	  {% for comp in companies %}
+	  <option value="{{comp.id | raw}}">{{comp.name | raw}}</option>
+	  {% endfor %}
+	</select> -->
+	
+	<select id="xparam1" class="form-select" name="xparam1" >
+		<option selected="{{id_comp | raw}}">{{comp_name | raw}}</option>
+		<optgroup label="Мои">
+		{% for comp in companies1 %}
+		  <option value="{{comp.id | raw}}">{{comp.name | raw}}</option>
+		{% endfor %}
+		</optgroup>
+		<optgroup label="Опубликованные">
+		  {% for comp in companies2 %}
+		  <option value="{{comp.id | raw}}">{{comp.name | raw}}</option>
+		 {% endfor %}
+		</optgroup>
+	  </select>
+						  
+  </div>
+  
+  <div class="mb-3 mt-3">
+	<label for="xparam2" class="form-label">Тип данных</label>
+	<!--<select class="form-select" id="exampleFormControlSelect1" aria-label="Организация">
+	  <option selected="">Выберите организацию</option>
+	  {% for comp in companies %}
+	  <option value="{{comp.id | raw}}">{{comp.name | raw}}</option>
+	  {% endfor %}
+	</select> -->
+	
+	<select id="xparam2" class="form-select" name="xparam2" >
+		<option value="1" {{sel1|raw}}>Прибыль и убытки</option>
+		<option value="2" {{sel2|raw}}>Баланс</option>
+	  </select>
+						  
+  </div>
+	
+	
+	<div class="col-sm-12 fv-plugins-icon-container">
+	  <label class="form-label" for="Descr">Описание</label>
+	  <div class="input-group input-group-merge has-validation">
+		<span class="input-group-text"><i class="ti ti-script"></i></span>
+		<textarea class="form-control" id="Descr" rows="6" name="Descr" class="form-control dt-descr" placeholder="" aria-label="">{{ descr | raw }}</textarea>
+	  </div><div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+	  <div class="form-text"> </div>
+	</div>
+	
+	<div class="col-sm-12">
+	  <button type="submit" class="btn btn-primary data-submit me-sm-3 me-1 waves-effect waves-light" onclick="saveForm('#form-add-new-record');return false;">{{ make | raw }}</button>
+	  <button type="reset" class="btn btn-outline-secondary waves-effect" data-bs-dismiss="offcanvas">Закрыть</button>
+	</div>
+  <input type="hidden"></form>
+</div>
+
+
+

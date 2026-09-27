@@ -1,0 +1,398 @@
+<link rel="stylesheet" href="/assets/vendor/libs/dropzone/dropzone.css" />
+<script src="/assets/vendor/libs/dropzone/dropzone-min.js"></script> 
+
+<!-- <script src="/assets/js/forms-file-upload.js?v=23342313"></script> --> 
+<link href="/custom/css/datepicker.min.css" rel="stylesheet"  >
+<style>
+ .dropzone .dz-preview {
+	min-width: 100px;
+ }
+ .dropzone {
+	min-width: 100px;
+	padding: 20px 15px 20px 15px;
+	margin: 0px;
+ }
+</style>
+  <!-- Content wrapper -->
+  <div class="content-wrapper">
+	<!-- Content -->
+	
+	<div class="card p-4">
+		<div class="card-header row p-2">
+			<div class="head-label text-start col-6" style="margin: 5px 0 0 -5px;">
+				<h5 class="card-title mb-0">Исходные данные</h5>
+				<small class="text-muted" >{{item[0].comp_name | raw}}</small>
+			</div>
+			<div class="dt-action-buttons text-end pt-3 pt-md-0 col">
+				<div class="dt-buttons btn-group flex-wrap">
+					<div class="btn-group">
+						<button class="btn btn-secondary buttons-collection btn-label-primary me-2 waves-effect waves-light" tabindex="0" aria-controls="DataTables_Table_0" type="button" aria-haspopup="dialog" aria-expanded="false">
+							<span>
+								<span class="ti ti-file-export me-sm-1"></span>
+								<span class="d-none d-sm-inline-block">Экспорт xls</span>
+							</span>
+						</button>
+					</div>
+					<button class="btn btn-secondary  btn-label-primary me-2 waves-effect waves-light"  type="button" onClick="getContent('#id-table-content'); return false;">
+						<span>
+							<span class="ti ti-reload me-sm-1"></span>
+							<span class="d-none d-sm-inline-block">Обновить </span>
+						</span>
+				    </button>
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="divider mt-0 text-start">
+			<div class="divider-text"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-database"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6m-8 0a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /><path d="M4 6v6a8 3 0 0 0 16 0v-6" /><path d="M4 12v6a8 3 0 0 0 16 0v-6" /></svg></div>
+		 </div>
+		 
+		 	<div class="mb-3 row">
+			<div class="col-xl-9 col-sm-8 mb-4">
+				<div style="max-width: 750px;">
+				Для загрузки данных заполните шаблоны в формате <b>.xlsx</b> и загрузите их через форму:
+				<div class="demo-inline-spacing mt-3 mb-3">
+					<div class="list-group list-group-flush">
+						<div class="list-group-item d-flex justify-content-between align-items-center">Шаблон для балансов
+						  <a href="/views/pages/pro/LEAN/files/tmp_balance_ru.xlsx" download>tmp_balance_ru.xlsx</a>
+						</div>
+						<div class="list-group-item d-flex justify-content-between align-items-center">Шаблон для прибылей и убытков
+						  <a href="/views/pages/pro/LEAN/files/tmp_balance_ru.xlsx" download>tmp_profit_ru.xlsx</a>
+						</div>
+						<div class="list-group-item d-flex justify-content-between align-items-center">Общий шаблон (загрузка одним файлом)
+						  <a href="/views/pages/pro/LEAN/files/tmp_balance_ru.xlsx" download>tmp_data_ru.xlsx</a>
+						</div>
+					</div>
+			  </div>
+			  При загрузке выбирайте первый период, для которого в файле указаны данные в первом столбце после наименований параметров, все остальные периоды будут сформированны автоматически из данных в соответствующих столбцах начиная с первого периода и периодичности. Подписи периодов в столбцах не обязательны.
+			  </div>
+			</div>
+			<div class="col-xl-3 col-sm-4 mb-4">
+				<h6>Загрузите файлы</h6>
+				<form action="/api/v1/json/pro/upload" class="dropzone needsclick border border-secondary-subtle rounded-2 mb-3" id="dropzone-basic" style="min-height: 175px;">	
+				  <div class="dz-message needsclick border border-secondary-subtle rounded-2 border-dashed" style="min-height: 150px; background-color: #f8f8f8;text-align: center; padding: 10px; margin: 0;">
+				  <span class="ti ti-cloud-up me-sm-1  ti-md mt-4 mb-2"></span><br>
+					Перенесите файл сюда или выберите файл для загрузки
+					<span class="note needsclick">(Загружайются файлы только в формате MS Excel: 
+					<span class="fw-medium">xls</span> и <span class="fw-medium">xlsx</span>)</span>
+					<!--<input id="file-input" type="file" name="file" multiple>
+					<label for="file-input">Выберите файл</label>
+					<span>или перетащите его сюда</span>-->
+				  </div>
+				  <input type="hidden" id="xid_dop" name="xid" value="{{ id | raw }}" />
+				  <input type="hidden" id="ext" name="ext" value="xls, xlsx" />
+				</form>	 
+				
+				<div class="fallback mt-3" style="text-align: right">
+					<button type="button" class="btn btn-outline-primary waves-effect" onclick="clearFiles();return false;">Очистить</button>
+				  </div>
+					
+				<form action="/json/api/uploadExcel" class="mt-2" id="main_dropzone-basic">
+					<input type="hidden" id="xid" name="xid" value="{{ id | raw }}" />
+					
+					<div class="mb-3 row">
+						<label for="html5-month-input" class="form-label">Начало периода</label>
+						<div class="col-md-10">
+						  <!--<input class="form-control" type="month" value="2023-06">-->
+						  <input type="text" class="form-control form-control-1 input-sm from" id="xparam2" name="xparam2"placeholder="Укажите первый месяц для данных" >
+						</div>
+					  </div>
+				  
+					<div class="mb-3 mt-0">
+						<label for="xparam1" class="form-label">Периодичность*</label>
+						<select id="xparam1" class="form-select" name="xparam1" >
+							<option value="0">Месяц</option>
+							<option value="1" selected>Квартал</option>
+							<option value="2">Полугодие</option>
+							<option value="3">Год</option>
+						  </select>
+											  
+					  </div>
+					
+				<!--dropzone needsclick bordered
+				  <div class="fallback mt-4">
+					<input name="file" type="file" />
+				  </div> -->
+				  <div class="fallback mt-4" style="text-align: right">
+					<button type="submit" class="btn btn-secondary buttons-collection btn-label-primary waves-effect waves-light bordered">Загрузить</button>
+				  </div>
+				</form>
+				<div class="divider mt-0 text-center">
+					<div class="divider-text">или</div>
+				 </div>
+				 <h6>Добавьте значения через форму</h6>
+				 <button class="btn btn-secondary create-new buttons-collection btn-label-primary waves-effect waves-light m-2" tabindex="0" aria-controls="DataTables_Table_0" type="button" href="#add-new-record" id="add-new-record-button">
+					<span>
+						<span class="ti ti-plus me-sm-1"></span>
+						<span class="d-none d-sm-inline-block">Баланс</span>
+					</span>
+				</button>
+				<button class="btn btn-secondary create-new buttons-collection btn-label-primary waves-effect waves-light m-2" tabindex="0" aria-controls="DataTables_Table_0" type="button" href="#add-new-record" id="add-new-record-button1">
+					<span>
+						<span class="ti ti-plus me-sm-1"></span>
+						<span class="d-none d-sm-inline-block">Прибыли и убытки</span>
+					</span>
+				</button>
+			</div>
+		</div>
+		
+		<div class="mb-3 row">
+		{% for item in items %}
+				<div class="col-xl-3 col-sm-6 mb-4">
+                  <div class="card h-100">
+						<!-- header -->
+                     <div class="card-header d-flex justify-content-between pb-0">
+                      <div class="card-title mb-0 pb-2">
+                        <h5 class="mb-0">{{item.name | raw}}</h5>
+                        <small class="text-muted" >{{item.comp_name | raw}}</small>
+                      </div>
+                      <div class="dropdown">
+                        <div class="block" style=" width: 75px; display: flex;">
+							<div class="d-inline-block">
+								<a href="" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+									<span class="text-primary fa-solid fa-ellipsis-vertical fa-lg"></span>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-end m-0">
+									<li>
+										<a href="#" class="dropdown-item">Клонировать</a>
+									</li>
+									<li>
+										<a href="#" class="dropdown-item">Объединить</a>
+									</li>
+									<li>
+										<a href="#" class="dropdown-item text-danger delete-record" onclick="delRecord('{{item.id | raw }}', '{{item.name | raw }}', '{{item.url_del | raw }}');return false;">Удалить</a>
+									</li>
+								</ul>
+							</div>
+							<div class="d-inline-block">
+								<a href="#" class="btn btn-sm btn-icon item-edit" onclick="setProID({{item.id}});return false;" tooltip >
+									 <span class="text-primary fa-solid fa-pencil fa-lg"></span>
+								</a>
+							</div>
+							<div class="d-inline-block">
+								<a href="#" class="btn btn-sm btn-icon item-edit" onclick="openDetail({{item.id}});return false;" tooltip >
+									 <span class="text-primary ti ti-corner-right-down ti-md"></span>
+								</a>
+							</div>
+						</div>
+                      </div>
+                    </div> <!-- header  <div class="divider">
+                        <div class="divider-text">V</div>
+                      </div>-->
+					<hr class="m-1">
+					
+                    <div class="card-body pt-1">
+						<h5 class="mb-3 mt-1">{{item.dataType | raw}}</h5>
+						<div class="d-flex justify-content-between gap-0">
+							<div class="badge bg-label-success rounded p-2"><i class="ti ti-chart-bar ti-sm"></i></div>
+							  <div class="d-flex justify-content-between w-100 flex-wrap">
+								<h6 class="mb-0 ms-2 mt-2 d-inline-block text-truncate" style="max-width: 165px;">{{item.nameParam | raw}}</h6>
+								<div class="d-flex">
+								  <p class="mb-0 fw-medium mt-2" id="id_resRasch_Prib_8">{{item.val | raw}}</p>
+								  <!--<p class="ms-3 text-success mb-0" id="id_resRasch_PribDop_8">0.3%</p> -->
+								</div>
+							  </div>
+						  </div>
+					  
+                      <div class="d-flex justify-content-between align-items-center mb-2 gap-3 pt-1 mt-2"><!-- time -->
+                        <div class="row mb-3 g-3">
+							<div class="col-6">
+							  <div class="d-flex">
+								<div class="avatar flex-shrink-0 me-2">
+								  <span class="avatar-initial rounded bg-label-primary"><i class="ti ti-calendar-event ti-md"></i></span>
+								</div>
+								<div style="width: 120px;">
+								  <h6 class="mb-0 text-nowrap">{{item.cnt | raw}}</h6>
+								  <small>Кол-во периодов</small>
+								</div>
+							  </div>
+							</div>
+							<div class="col-6">
+							  <div class="d-flex ms-2">
+								<div class="avatar flex-shrink-0 me-2">
+								  <span class="avatar-initial rounded bg-label-primary"><i class="ti ti-clock ti-md"></i></span>
+								</div>
+								<div>
+								  <h6 class="mb-0 text-nowrap">{{item.pt | raw}}</h6>
+								  <small>Длительность</small>
+								</div>
+							  </div>
+							</div>
+						  </div>
+                      </div><!-- time -->
+
+                      <div class="d-flex justify-content-between gap-3">
+                        <p class="mb-0">{{item.stdate | raw}}</p>
+                        <span class="text-muted">{{item.enddate | raw}}</span>
+                      </div>
+                      <div class="d-flex align-items-center mt-1">
+                        <div class="progress w-100" style="height: 8px">
+                          <div class="progress-bar bg-info" style="width: {{item.prc | raw}}%" role="progressbar" aria-valuenow="{{item.prc | raw}}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+				<!-- 1cardf -->
+			{% endfor %}
+		</div><!-- row -->
+	</div>
+<!-- Overlay -->
+		<!-- Modal to add new record -->
+	  <div class="offcanvas offcanvas-end" id="add-new-record" aria-modal="true" role="dialog" pro-id="0" pro-url="/api/v1/htm/pro/spr/rawdata/page/mainForm">
+		<h5 class="card-title m-2">Загрузка формы..</h5>
+		<div style="text-align: center;display: flex;  align-items: center;  justify-content: center;  height: 100%;">
+			<div class="sk-grid sk-primary">
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+			  </div>
+		 </div>
+	  </div>
+	  <!--/ DataTable with Buttons -->
+	  <!-- template-container <img data-dz-thumbnail>-->
+	  <div id="template-container" style="display: none;" >
+	  <div class="dz-preview dz-file-preview">
+		<div class="dz-details">
+		  <div class="dz-thumbnail">
+			
+			<span class="dz-nopreview"><i class="ti ti-file-check ti-xl "></i></span>
+			<div class="dz-success-mark"><i class="ti ti-file-type-xls ti-xl"></i></div>
+			<div class="dz-error-mark"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-alert-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 8v4" /><path d="M12 16h.01" /></svg></div>
+			<div class="dz-error-message"><span data-dz-errormessage></span></div>
+			<div class="progress">
+			  <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-dz-uploadprogress></div>
+			</div>
+		  </div>
+		  <div class="dz-filename" data-dz-name></div>
+		  <div class="dz-size" data-dz-size></div>
+		  </div>
+		</div>
+	  </div>
+	  <!-- template-container<span class="ti ti-file-x  ti-md mt-4 mb-2"></span> -->
+</div>
+<!-- CHART 
+<script src="/custom/js/bootstrap-datepicker.min.js"  ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"  ></script>
+<script>
+	listFiles = [];
+	var startDate = new Date();
+	
+	$(document).ready(function() {
+		$("#main_dropzone-basic").on("submit", function (event) {
+			event.preventDefault(); // Отменяем стандартное поведение формы
+			//console.log(listFiles);
+			if(listFiles.length == 0){
+				Swal.fire({
+					title: 'Внимание!',
+					text: ' Необходимо загрузить в начале файлы!',
+					icon: 'warning',
+					customClass: {
+					  confirmButton: 'btn btn-primary waves-effect waves-light'
+					},
+					buttonsStyling: false
+				  });
+			} else {
+			
+				var $form = $(this);
+				// Получаем данные из полей формы
+				var data = $form.serializeArray();
+				data.push({ name: 'files', value: '["'+ listFiles.join('","') +'"]' });
+				//console.log('------>>');		
+				//console.log(data);
+				// Отправляем данные на сервер с помощью AJAX
+				//'/api/v1/json/pro/upload',//dropZone.attr('action'),
+				$.ajax({
+				  url: "/json/api/uploadExcel", // Здесь указываем URL-адрес серверного обработчика
+				  type: "post",
+				  data: data,
+				  success: function (response, textStatus, jqXHR) {successHook (response, textStatus, jqXHR/*, function(data){if (data.data.fileName){listFiles.push(data.data.fileName);}}*/);},
+				  error: errorHook,
+				});
+			}
+		});
+		
+	
+		$('#xparam2').datepicker({
+			autoclose: true,
+			minViewMode: 1,
+			//language: 'ru',
+			format: 'mm.yyyy'
+		}).on('changeDate', function(selected){
+			//startDate = new Date(selected.timeStamp * 1000);
+			//$('#xparam2').val( startDate.toLocaleDateString("ru-RU"));
+			//startDate.setDate(startDate.getDate(new Date(selected.date.valueOf())));
+			startDate = new Date(selected.date.valueOf());
+			startDate.setDate(startDate.getDate(new Date(selected.date.valueOf())));
+		}); /**/
+	});//ready
+	
+	Dropzone.options.dropzoneBasic = {
+		  previewTemplate: document.querySelector('#template-container').innerHTML,
+		  parallelUploads: 5,
+		  maxFilesize: 5550000,
+		  addRemoveLinks: false,
+		  maxFiles: 5,
+		  init: function() {
+			this.on("addedfile", file => {
+			  console.log("A file has been added");
+				//$("#dropzone-basic").submit();
+			});
+			
+			this.on("success", function(files, response) {
+			  let data = response;
+			  if (data.data.fileName){listFiles.push(data.data.fileName);}
+			  if (!data.msg){ 
+				  if (data.data.msg) {data = data.data;}
+				  else {
+					if (data.message){data.push({msg:data.message});data.push({code:1});}else{data.push({msg:'ok'});data.push({code:1});}
+				  }
+			  }
+
+			  toastr.success(data.msg);
+			  //$('#id_btn_close').trigger('click');
+			  //getTable('#id-table-content');
+			});
+			this.on("error", function(files, response) {
+				let data = []; 
+				if (typeof response == "string") {
+					data = new Map([
+					  ['code', 1],
+					  ['msg', response]
+					]); 
+				  } else {data = response;}//$.parseJSON(response)
+				if (!data.msg){if (data.message){data.push({msg:data.message});data.push({code:-2});}else{data.push({msg:'Неизвестная ошибка'});data.push({code:-2});}}
+				
+				$('.dz-error-message').empty(); 
+				$('.dz-error-message').text(data.msg);
+
+				toastr.options = {"timeOut": 0, "extendedTimeOut": 0};
+				toastr.warning(data.msg+'<br /><br /><button type="button" class="btn btn-label-warning">Закрыть</button>', 'Ошибка: '+data.code.toString() );
+				toastr.options = { "timeOut": 5000, "extendedTimeOut": 1000 };
+			});
+		  }
+	  };
+	  Dropzone.discover(); 
+	
+	function clearFiles(){
+		listFiles = [];
+		$('.dz-preview').remove();
+		$('.dz-message').css("display", "block");
+	}
+	
+	function openDetail(sid){
+		window.location.href='/api/v1/q/htm/pro/spr/rawdata/page/variantEdit/'+sid
+	}
+	
+	function afterSaveMainForm(sid){
+		openDetail(sid);
+	}
+	
+</script>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор эффективности инвестиционного проекта</title>
+	    <style>
+        /* Стили можно вынести в отдельный CSS файл */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.875rem;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .results-grid {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+        }
+        
+        .flow-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+            background-color: #f8f8f8;
+            margin-bottom: 5px;
+            border-radius: 4px;
+        }
+        
+        .positive { color: #22c55e; }
+        .negative { color: #ef4444; }
+        
+        .conclusions {
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        
+        .conclusions h5 {
+            margin-top: 0;
+        }
+        
+        .conclusions ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+		/*input {max-width: 150px;}*/
+    </style>
+	<script src="/views/pages/pro/LEAN/rep_calc_page_content.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Секция ввода параметров -->
+        <div class="parameters-card form-inline" >
+            <h4>Параметры проекта цифровой трансформации</h4>
+            
+			<div class="row">
+            <!-- Базовые параметры -->
+            <div class="parameters-section col-5 p-3">
+                <h5>Базовые параметры</h5>
+                <div class="input-group">
+                    <label for="projectDuration">Длительность проекта (лет)</label>
+                    <input type="number" id="projectDuration" value="5">
+                </div>
+                <div class="input-group">
+                    <label for="inflationRate">Ставка инфляции (%)</label>
+                    <input type="number" id="inflationRate" value="4.0">
+                </div>
+                <div class="input-group">
+                    <label for="lendingRate">Ставка кредитования (%)</label>
+                    <input type="number" id="lendingRate" value="12.0">
+                </div>
+                <div class="input-group">
+                    <label for="taxRate">Налоговая ставка (%)</label>
+                    <input type="number" id="taxRate" value="20.0">
+                </div>
+            </div>
+
+            <!-- Инвестиции -->
+            <div class="parameters-section col-5 p-3">
+                <h5>Структура инвестиций</h5>
+                <div class="input-group">
+                    <label for="investment_software">Программное обеспечение</label>
+                    <input type="number" id="investment_software" value="1000000">
+                </div>
+                <div class="input-group">
+                    <label for="investment_hardware">Оборудование</label>
+                    <input type="number" id="investment_hardware" value="500000">
+                </div>
+                <div class="input-group">
+                    <label for="investment_implementation">Внедрение</label>
+                    <input type="number" id="investment_implementation" value="300000">
+                </div>
+                <div class="input-group">
+                    <label for="investment_training">Обучение</label>
+                    <input type="number" id="investment_training" value="200000">
+                </div>
+            </div>
+			
+			</div>
+			<div class="row">
+            <!-- Текущие показатели -->
+            <div class="parameters-section col-5 p-3">
+                <h5>Текущие показатели</h5>
+                <div class="input-group">
+                    <label for="baseline_annualRevenue">Годовая выручка</label>
+                    <input type="number" id="baseline_annualRevenue" value="{{Revenue|raw}}">
+                </div>
+                <div class="input-group">
+                    <label for="baseline_operationalCosts">Конверсионные затраты</label>
+                    <input type="number" id="baseline_operationalCosts" value="{{Overheads|raw}}">
+                </div>
+                <div class="input-group">
+                    <label for="baseline_laborCosts">Затраты на персонал</label>
+                    <input type="number" id="baseline_laborCosts" value="2000000">
+                </div>
+                <div class="input-group">
+                    <label for="baseline_maintenanceCosts">Затраты на обслуживание</label>
+                    <input type="number" id="baseline_maintenanceCosts" value="500000">
+                </div>
+            </div>
+
+            <!-- Прогнозируемые улучшения -->
+            <div class="parameters-section col-5 p-3">
+                <h5>Прогнозируемые улучшения (%)</h5>
+                <div class="input-group">
+                    <label for="improvement_revenueIncrease">Рост выручки</label>
+                    <input type="number" id="improvement_revenueIncrease" value="15">
+                </div>
+                <div class="input-group">
+                    <label for="improvement_costReduction">Снижение затрат</label>
+                    <input type="number" id="improvement_costReduction" value="20">
+                </div>
+                <div class="input-group">
+                    <label for="improvement_laborEfficiency">Повышение эффективности персонала</label>
+                    <input type="number" id="improvement_laborEfficiency" value="25">
+                </div>
+                <div class="input-group">
+                    <label for="improvement_maintenanceReduction">Снижение затрат на обслуживание</label>
+                    <input type="number" id="improvement_maintenanceReduction" value="30">
+                </div>
+            </div>
+			</div>
+        </div>
+		<button class="btn btn-secondary  btn-label-primary me-2 waves-effect waves-light"  type="button" onClick="getSelect(); return false;">
+			<span>
+				<span class="ti ti-reload me-sm-1"></span>
+				<span class="d-none d-sm-inline-block">Рассчитать показатели </span>
+			</span>
+		</button>
+        <!-- Секция результатов -->
+        <div class="results-card">
+            <h2>Результаты расчета</h2>
+            
+            <!-- Ключевые показатели -->
+            <div class="results-section">
+                <h5>Ключевые показатели</h5>
+                <div class="result-row">
+                    <span>NPV:</span>
+                    <span id="npv"></span>
+                </div>
+                <div class="result-row">
+                    <span>IRR:</span>
+                    <span id="irr"></span>
+                </div>
+                <div class="result-row">
+                    <span>ROI:</span>
+                    <span id="roi"></span>
+                </div>
+                <div class="result-row">
+                    <span>Срок окупаемости:</span>
+                    <span id="paybackPeriod"></span>
+                </div>
+                <div class="result-row">
+                    <span>Индекс прибыльности (PI):</span>
+                    <span id="pi"></span>
+                </div>
+            </div>
+
+            <!-- Денежные потоки -->
+            <div class="results-section">
+                <h5>Денежные потоки по годам</h5>
+                <div id="cashFlows"></div>
+            </div>
+
+            <!-- Выводы -->
+            <div class="conclusions-section">
+                <h5>Выводы по проекту</h5>
+                <ul id="conclusions"></ul>
+            </div>
+        </div>
+    </div>
+
+   <!-- <script src="calculator.js"></script>-->
+</body>
+</html>
+
+<script>
+	/*var Operating_Profit = {{Operating_Profit|raw}};
+	var Revenue = {{Revenue|raw}};
+	var Operating_Cash_Flow = {{Operating_Cash_Flow|raw}};
+	var Gross_Margin_prc = {{Gross_Margin_prc|raw}};
+	var COGS = {{COGS|raw}};
+	var Overheads = {{Overheads|raw}};
+	var Net_Cash_Flow = {{Net_Cash_Flow|raw}};
+	var workCapitalPer100 = {{workCapitalPer100|raw}};
+	var cntDay ={{cntDay|raw}}; */
+	
+	let calculator = {};
+
+
+	$(function() {
+		console.log(2);
+		// Создание экземпляра калькулятора
+		calculator = new InvestmentCalculator();
+		//calculator.calculateMetrics();
+		
+		calculator.setupInputListeners();
+
+	/*	$( "input" ).on( "change",   function() {
+		  getSelect($(this)); updAll();
+		});
+
+		$('input').each(function (index, element) {
+			// input — селектор функции each()
+			// index — текущий индекс
+			// element — ссылка на текущий элемент
+			getSelect($(element));
+		    //console.log('Индекс элемента: ' + index + '; класс элемента: ' +$(element).attr('class'));
+	   }); 
+	   updAll();*/
+	});
+
+	function getSelect(){
+		calculator.calculateMetrics();
+        calculator.updateUI();
+	}
+
+</script>

@@ -1,0 +1,99 @@
+<style type="text/css">.card{box-shadow: none;}</style>
+<link rel="stylesheet" href="/assets/vendor/libs/dropzone/dropzone.css" />
+<script src="/assets/vendor/libs/block-ui/block-ui.js"></script> 
+<script src="/assets/vendor/libs/dropzone/dropzone-min.js"></script> 
+  <!--Content wrapper tyle="width: 30px;height: 30px;"-->
+<div class="content-wrapper">
+	<!-- Content -->
+	<div class="card p-4">
+		<div class="card-header row p-2">
+			<div class="head-label text-start col-6" style="margin: 5px 0 0 -5px;"> 
+
+				<button class="btn btn-secondary buttons-collection btn-label-primary me-2 waves-effect waves-light" tabindex="0" type="button" data-bs-toggle="tooltip" data-bs-custom-class="tooltip-primary" data-bs-placement="bottom" data-bs-original-title="К исходным данным" onclick="window.location.href = '/api/v1/q/htm/pro/spr/rawdata/page/main/{{id_comp|raw}}';" style="top: -20px;">
+					<span>
+						<span class="ti ti-corner-up-left me-sm-1"></span>
+					</span>
+				</button>		
+				
+				<div class="d-none d-sm-inline-block">
+					<h5 class="card-title mb-0">{{name|raw}}</h5>
+					<small class="text-muted" >{{comp_name | raw}}</small>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="divider mt-0 text-start">
+			<div class="divider-text"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-database"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6m-8 0a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /><path d="M4 6v6a8 3 0 0 0 16 0v-6" /><path d="M4 12v6a8 3 0 0 0 16 0v-6" /></svg></div>
+		 </div>
+		 
+		 <div class="mb-3 row" style="min-height: 300px;" id="id-table-content" pro-id="{{id|raw}}" pro-url="/api/v1/htm/pro/spr/rawdata/page/variantDataTable">
+		 
+		 </div>
+
+	</div>
+ 
+	
+	 
+</div>
+<!-- / Layout wrapper -->
+		
+<script>
+	//start after load page--
+	$(function() {
+		getTable('#id-table-content');
+	});
+
+  
+ function getTable(a){
+	var frm = $(a);
+	
+	if(frm){
+		frm.block({
+			message:
+			  '<div class="sk-wave mx-auto"><div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div></div>',
+			timeout: 0,
+			css: {
+			  backgroundColor: 'transparent',
+			  border: '0'
+			},
+			overlayCSS: {
+			  opacity: 0.5
+			}
+		  });
+		var sid = frm.attr('pro-id');
+		var url = frm.attr('pro-url');
+		//console.log(sid);
+		
+		$.ajax({
+			url:  url+'/'+sid,
+			method: 'get',
+			dataType: 'html',
+			//data: {zuid: vl_sGuid},
+			success: function(data){
+				if (data.length >150 ){
+					frm.empty();
+					frm.append(data);
+
+				} else { //console.log(data.Error); 
+					toastr.options = {"timeOut": 0, "extendedTimeOut": 0};
+					toastr.warning(data.Error+'<br /><br />	<button type="button" class="btn btn-label-warning">Закрыть</button>', 'Ошибка '+data.code.toString()+'!' );
+					toastr.options = { "timeOut": 5000, "extendedTimeOut": 1000 };
+				}
+				frm.unblock();
+			},
+				error: function (jqXHR, exception) {errorHook (jqXHR, exception);}
+		});
+			
+	
+	}
+	return false;
+ }
+ 
+
+</script>
+<!--<script src="/assets/js/tables-datatables-basic.js"></script> -->
+
+
+
+

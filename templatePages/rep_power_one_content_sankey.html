@@ -1,0 +1,131 @@
+<html>
+<head>
+<style type="text/css">
+.card{box-shadow: none;}
+
+#csv {
+    display: none;
+}
+
+.highcharts-figure,
+.highcharts-data-table table {
+    min-width: 310px;
+	min-height: 400px;
+	width: 100%; 
+	max-width: 1000px;
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+
+.highcharts-description {
+    margin: 0.3rem 10px;
+}
+.highcharts-subtitle {
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+    fill: #7cb5ec;
+}
+
+
+</style><!--http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js    https://model.bpms.tech-->
+    <script src="/assets/vendor/libs/jquery/jquery-3.7.1.min.js"></script>
+    <script src="/assets/vendor/libs/highcharts/highcharts.js"></script>
+	<script src="/assets/vendor/libs/highcharts/sankey.js"></script>
+	<script src="/assets/vendor/libs/highcharts/exporting.js"></script>
+	<script src="/assets/vendor/libs/highcharts/export-data.js"></script>
+	<script src="/assets/vendor/libs/highcharts/accessibility.js"></script>
+<script>
+    $(function () {
+            	//$('#container').highcharts({
+		Highcharts.chart('container', {
+			chart:{marginBottom: 0, height: 400},
+			title: {
+				text: '{{Sankey.name|raw}}'
+			},
+			subtitle: {
+				text: ''
+			},
+			caption: {
+				text: '<div style="display: inline-block;">Инвестиции</div><div style="display: inline-block; width:100px;"> &nbsp;</div><div style="display: inline-block;">Операционная деятельность/<br>Операционные активы</div>',
+				useHTML: true,
+				align: 'center',
+				verticalAlign: 'bottom',
+				y: 100
+			},
+			accessibility: {
+				point: {
+					valueDescriptionFormat: '{index}. {point.from} to {point.to}, ' + '{point.weight}.'
+				}
+			},
+			dataLabels : {
+				format: '{point.name}<br>{point.sum} тыс. руб.',
+				style: {
+					color: "black",
+					textOutline: "none"
+				  }
+			},
+			tooltip: {
+				headerFormat: null,
+				pointFormat: '{point.fromNode.name} \u2192 {point.toNode.name}: {point.weight} ' +  ' тыс. руб.',
+				nodeFormat: '{point.name}: {point.sum} тыс. руб.'
+			},
+			colors: ['#98E0AD','#FBC1C1', '#889DE0'],
+			
+			series: [{
+				nodeWidth: 10,
+				nodeAlignment:'center',
+				nodeDistance:50,
+				nodePadding:45,
+				//showInLegend: true,
+				centerInCategory: true,
+				/*dataSorting: {
+					enabled: true,
+					sortKey: 'iSort'
+				}, */
+				nodes: {{Sankey.profit.hinodes|raw}},
+				data: {{Sankey.profit.hiseries|raw}},
+				type: 'sankey',
+				name: 'Profit'
+			}]
+		});
+	});
+</script>
+</head> <!-- min-width: 1000px;  -->
+<body>
+    <div id="container" style="width:100%; height: 450px; margin: 0 auto"></div>
+</body>
+</html>

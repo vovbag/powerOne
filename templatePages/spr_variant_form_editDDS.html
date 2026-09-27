@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="/assets/vendor/libs/bootstrap-select/bootstrap-select.css " />
+
+<div class="offcanvas-header border-bottom">
+  <h5 class="offcanvas-title" id="exampleModalLabel">{{ make | raw }} {{comment|raw}}</h5>
+  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+</div>
+
+<div class="offcanvas-body flex-grow-1">
+  <form class="add-new-record pt-0 row g-2 fv-plugins-bootstrap5 fv-plugins-framework" id="form-add-new-record" onsubmit="return false" novalidate="novalidate" pro-url="/api/v1/json/pro/spr/rawdata/upd/variant/{{ idpro | raw }}">
+  
+	<div class="mb-3 mt-0">
+		<label for="xparam1" class="form-label">Периодичность*</label>
+		<select id="xparam1" class="form-select" name="xparam1" >
+			<option value="0" {{sel0|raw}}>Месяц</option>
+			<option value="1" {{sel1|raw}}>Квартал</option>
+			<option value="2" {{sel2|raw}}>Полугодие</option>
+			<option value="3" {{sel3|raw}}>Год</option>
+		  </select>
+							  
+	  </div>
+	  
+	<div class="mb-3 row">
+		<label for="html5-month-input" class="form-label">Начало периода</label>
+		<div class="col-md-10">
+		  <input class="form-control" type="month" value="2023-06" id="xparam2" name="xparam2" value="{{stdate|raw}}">
+		</div>
+	  </div>
+
+	
+	<div class="divider mt-0 text-start">
+		<div class="divider-text">Данные {{dataType|raw}}</div>
+	</div>
+	<div class="card-body">
+	
+		{% for dd in tmp %}
+		<div class="mb-3 row">
+			<label for="{{dd.id|raw}}" class="col-md-6 text-muted" style="text-align: right;">{{dd.name|raw}}</label>
+			<div class="col-md-6">
+			  <input class="form-control" type="number" value="{{dd.value|raw}}"  name="{{dd.id|raw}}" id="{{dd.id|raw}}" />
+			</div>
+		</div>
+		{% endfor %}
+					  
+    </div>
+	
+	
+	<div class="col-sm-12">
+	  <button type="submit" class="btn btn-primary data-submit me-sm-3 me-1 waves-effect waves-light" onclick="saveForm('#form-add-new-record');return false;">{{ make | raw }}</button>
+	  <button type="reset" class="btn btn-outline-secondary waves-effect" data-bs-dismiss="offcanvas">Закрыть</button>
+	</div>
+  <input type="hidden"></form>
+</div>
+
+
+

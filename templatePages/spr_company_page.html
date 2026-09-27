@@ -1,0 +1,145 @@
+<style type="text/css">.card{box-shadow: none;}</style>
+
+  <!--Content wrapper -->
+<div class="content-wrapper">
+	<!-- Content -->
+	<div class="container-xxl flex-grow-1 container-p-y">
+		<div class="card">
+			<div class="card-datatable table-responsive pt-0">
+				<div id="DataTables_Table_0_wrapper1" class="dataTables_wrapper dt-bootstrap5 no-footer">
+					<div class="card-header flex-column flex-md-row">
+						<div class="head-label text-center">
+							<h5 class="card-title mb-0">Список организаций</h5>
+						</div>
+						<div class="dt-action-buttons text-end pt-3 pt-md-0">
+							<div class="dt-buttons btn-group flex-wrap">
+								<div class="btn-group">
+									<button class="btn btn-secondary buttons-collection dropdown-toggle btn-label-primary me-2 waves-effect waves-light" tabindex="0" aria-controls="DataTables_Table_0" type="button" aria-haspopup="dialog" aria-expanded="false">
+										<span>
+											<span class="ti ti-file-export me-sm-1"></span>
+											<span class="d-none d-sm-inline-block">Export</span>
+										</span>
+									</button>
+								</div>
+								<button class="btn btn-secondary create-new btn-primary waves-effect waves-light" tabindex="0" aria-controls="DataTables_Table_0" type="button" href="#add-new-record" id="add-new-record-button">
+									<span>
+										<span class="ti ti-plus me-sm-1"></span>
+										<span class="d-none d-sm-inline-block">Добавить</span>
+									</span>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<table class="datatables-basic table dataTable no-footer dtr-column" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" style="width: 100%;">
+						<thead>
+							<tr>
+								<th class="control sorting_disabled dtr-hidden" rowspan="1" colspan="1" style="width: 0px; display: none;" aria-label=""/>
+								<th class="sorting_disabled dt-checkboxes-cell dt-checkboxes-select-all" rowspan="1" colspan="1" style="width: 18px;" data-col="1" aria-label="">
+									<input type="checkbox" class="form-check-input">
+									</th>
+									<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 30%;" aria-label="Name: activate to sort column ascending">Наименование</th>
+									<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 30%;" aria-label="Email: activate to sort column ascending">Опубликовано для</th>
+									<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 120px; text-align: center;" aria-label="Date: activate to sort column ascending">Дата</th>
+									<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 160px; text-align: center;" aria-label="Salary: activate to sort column ascending">ИНН</th>
+									<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 120px; text-align: center;" aria-label="Status: activate to sort column ascending">Статус</th>
+									<th class="sorting_disabled" align="center" rowspan="1" colspan="1" style="width: 100px; text-align: center;" aria-label="Actions">...</th>
+								</tr>
+						</thead>
+						<tbody>
+							{% for comp in companies %}
+							<tr class="{{ comp.odd | raw }}">
+								<!--class="even" -->
+								<td class="  control" tabindex="0" style="display: none;"/>
+								<td class="  dt-checkboxes-cell">
+									<input type="checkbox" class="dt-checkboxes form-check-input">
+									</td>
+									<td>
+										<div class="d-flex justify-content-start align-items-center user-name">
+											<div class="avatar-wrapper">
+												<div class="avatar me-2">
+													<span class="avatar-initial rounded-circle bg-label-{{ comp.statusColor | raw }}">{{ comp.FF | raw }}</span>
+												</div>
+											</div>
+											<div class="d-flex flex-column">
+												<span class="emp_name text-truncate">{{ comp.name | raw }}</span>
+												<small class="emp_post text-truncate text-muted">{{ comp.comp_Vid | raw }}</small>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="d-flex flex-column">
+											<span class="emp_name text-truncate">{{ comp.public | raw }}</span>
+											<small class="emp_post text-truncate text-muted">{{ comp.descr | raw }}</small>
+										</div>
+									
+									</td>
+									<td>{{ comp.date | raw }}</td>
+									<td align="center">{{ comp.comp_INN | raw }}</td>
+									
+									<td align="center">
+										<span class="badge bg-label-{{ comp.statusColor | raw }}">{{ comp.status | raw }}</span><!---->
+									</td>
+									<td align="center">
+										<div class="block" style=" width: 50px; display: flex;">
+										<div class="d-inline-block">
+											<a href="" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+												<span class="text-primary fa-solid fa-ellipsis-vertical fa-lg"></span>
+											</a>
+											<ul class="dropdown-menu dropdown-menu-end m-0">
+												<li>
+													<a href="#" class="dropdown-item">Опубликовать</a>
+												</li>
+
+												<li>
+													<a href="#" class="dropdown-item text-danger delete-record" onclick="delRecord('{{comp.id | raw }}', '{{comp.name | raw }}', '{{comp.url | raw }}');return false;">Удалить</a>
+												</li>
+											</ul>
+										</div>
+										<div class="d-inline-block">
+											<a href="#" class="btn btn-sm btn-icon item-edit" onclick="setProID({{comp.id}});return false;">
+											
+												 <span class="text-primary fa-solid fa-pencil fa-lg"></span>
+
+											</a>
+											</div>
+										</div>
+									</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+
+
+				</div>
+			</div>
+		</div>
+		<!-- DataTable with Buttons -->
+
+	</div>
+	<!-- Modal to add new record -->
+	  <div class="offcanvas offcanvas-end" id="add-new-record" aria-modal="true" role="dialog" pro-id="0" pro-url="/api/v1/htm/pro/spr/company/page/mainForm">
+		<h5 class="card-title m-2">Загрузка формы..</h5>
+		<div style="text-align: center;display: flex;  align-items: center;  justify-content: center;  height: 100%;">
+			<div class="sk-grid sk-primary">
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+			  </div>
+		 </div>
+	  </div>
+	  <!--/ DataTable with Buttons -->
+</div>
+<!-- / Layout wrapper -->	
+<script>
+	function afterSaveMainForm(sid){
+		setTimeout(location.reload(), 2000);
+	}
+</script>
+<!--<script src="../../assets/js/tables-datatables-basic.js"></script> -->

@@ -1,0 +1,207 @@
+<style type="text/css">.card{box-shadow: none;}</style>
+<link rel="stylesheet" href="/assets/vendor/libs/dropzone/dropzone.css" />
+<script src="/assets/vendor/libs/block-ui/block-ui.js"></script> 
+<script src="/assets/vendor/libs/dropzone/dropzone-min.js"></script> 
+  <!--Content wrapper tyle="width: 30px;height: 30px;"-->
+<div class="content-wrapper">
+	<!-- Content -->
+	<div class="card p-4">
+		<div class="card-header row p-2">
+			<div class="head-label text-start col-6" style="margin: 5px 0 0 -5px;"> 
+
+				<button class="btn btn-secondary buttons-collection btn-label-primary me-2 waves-effect waves-light" tabindex="0" type="button" data-bs-toggle="tooltip" data-bs-custom-class="tooltip-primary" data-bs-placement="bottom" data-bs-original-title="К исходным данным" onclick="window.location.href = '/api/v1/q/htm/pro/spr/rawdata/page/mainGrid/{{id_comp|raw}}';" style="top: -20px;">
+					<span>
+						<span class="ti ti-corner-up-left me-sm-1"></span>
+					</span>
+				</button>		
+				
+				<div class="d-none d-sm-inline-block">
+					<h5 class="card-title mb-0">{{name|raw}}</h5>
+					<small class="text-muted" >{{comp_name | raw}}</small>
+				</div>
+			</div>
+			<div class="dt-action-buttons text-end pt-3 pt-md-0 col">
+				<div class="dt-buttons btn-group flex-wrap">
+					<div class="btn-group">
+						<button class="btn btn-secondary buttons-collection btn-label-primary me-2 waves-effect waves-light" tabindex="0" type="button"  data-target="#add-new-record" onclick="setProData('{{id|raw}}'); return false;">
+							<span>
+								<span class="ti ti-file-export me-sm-1"></span>
+								<span class="d-none d-sm-inline-block">Загрузить Excel</span>
+							</span>
+						</button>
+					</div>
+					<button class="btn btn-secondary create-new btn-primary waves-effect waves-light" tabindex="0" aria-controls="DataTables_Table_1" type="button"   data-target="#add-new-record" onclick="setProDataEdit('{{idpro|raw}}'); return false;">
+						<span>
+							<span class="ti ti-plus me-sm-1"></span>
+							<span class="d-none d-sm-inline-block">Добавить</span>
+						</span>
+					</button>
+					<button class="btn d-none" tabindex="0" aria-controls="DataTables_Table_2" type="button" id="add-new-record-button" data-bs-toggle="offcanvas" data-bs-target="#add-new-record" aria-controls="add-new-record" >
+						<span>
+							<span class="ti ti-plus me-sm-1"></span>
+							<span class="d-none d-sm-inline-block">Добавить</span>
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="divider mt-0 text-start">
+			<div class="divider-text"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-database"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6m-8 0a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /><path d="M4 6v6a8 3 0 0 0 16 0v-6" /><path d="M4 12v6a8 3 0 0 0 16 0v-6" /></svg></div>
+		 </div>
+		 
+		 <div class="mb-3 row" style="min-height: 300px;" id="id-table-content" pro-id="{{id|raw}}" pro-url="/api/v1/htm/pro/spr/rawdata/page/variantDataTableEdit">
+		 
+		 </div>
+
+	</div>
+	<!--href="#add-new-record"
+	<button class="btn btn-primary waves-effect waves-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBackdrop" aria-controls="offcanvasBackdrop">
+                          Enable backdrop
+                        </button>
+	<div class="offcanvas offcanvas-end show" tabindex="-1" id="offcanvasBackdrop" aria-labelledby="offcanvasBackdropLabel" aria-modal="true" role="dialog">
+                          <div class="offcanvas-header">
+                            <h5 id="offcanvasBackdropLabel" class="offcanvas-title">Enable backdrop</h5>
+                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                          </div>
+                          <div class="offcanvas-body my-auto mx-0 flex-grow-0">
+                            <p class="text-center">
+                              Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print,
+                              graphic or web designs. The passage is attributed to an unknown typesetter in the 15th
+                              century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum
+                              for use in a type specimen book.
+                            </p>
+                            <button type="button" class="btn btn-primary mb-2 d-grid w-100 waves-effect waves-light">Continue</button>
+                            <button type="button" class="btn btn-label-secondary d-grid w-100 waves-effect" data-bs-dismiss="offcanvas">
+                              Cancel
+                            </button>
+                          </div>
+                        </div>
+	
+	
+	 Modal to add new record -->
+	  <div class="offcanvas offcanvas-end" id="add-new-record" aria-modal="true" role="dialog" pro-id="0" pro-url="/api/v1/htm/pro/spr/rawdata/page/variantForm">
+		<h5 class="card-title m-2">Загрузка формы..</h5>
+		<div style="text-align: center;display: flex;  align-items: center;  justify-content: center;  height: 100%;">
+			<div class="sk-grid sk-primary">
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+			  </div>
+		 </div>
+	  </div>
+	  
+	   <div id="load-form" style="display: none;"> 
+		<h5 class="card-title m-2">Загрузка формы..</h5>
+		<div style="text-align: center;display: flex;  align-items: center;  justify-content: center;  height: 100%;">
+			<div class="sk-grid sk-primary">
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+				<div class="sk-grid-cube"></div>
+			  </div>
+		 </div>
+	   </div>
+	  <!--/ DataTable with Buttons -->
+</div>
+<!-- / Layout wrapper -->
+		
+<script>
+	//start after load page--
+	$(function() {
+		getTable('#id-table-content');
+	});
+
+  
+ function getTable(a){
+	var frm = $(a);
+	
+	if(frm){
+		frm.block({
+			message:
+			  '<div class="sk-wave mx-auto"><div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div></div>',
+			timeout: 0,
+			css: {
+			  backgroundColor: 'transparent',
+			  border: '0'
+			},
+			overlayCSS: {
+			  opacity: 0.5
+			}
+		  });
+		var sid = frm.attr('pro-id');
+		var url = frm.attr('pro-url');
+		//console.log(sid);
+		
+		$.ajax({
+			url:  url+'/'+sid,
+			method: 'get',
+			dataType: 'html',
+			//data: {zuid: vl_sGuid},
+			success: function(data){
+				if (data.length >150 ){
+					frm.empty();
+					frm.append(data);
+
+				} else { //console.log(data.Error); 
+					toastr.options = {"timeOut": 0, "extendedTimeOut": 0};
+					toastr.warning(data.Error+'<br /><br />	<button type="button" class="btn btn-label-warning">Закрыть</button>', 'Ошибка '+data.code.toString()+'!' );
+					toastr.options = { "timeOut": 5000, "extendedTimeOut": 1000 };
+				}
+				frm.unblock();
+			},
+				error: function (jqXHR, exception) {errorHook (jqXHR, exception);}
+		});
+			
+	
+	}
+	return false;
+ }
+ 
+ function setProData(sid){
+	var frm = $('#add-new-record');
+	console.log('setProData');
+	if(frm){
+		frm.attr('pro-id', sid);
+		frm.attr('pro-url', '/api/v1/htm/pro/spr/rawdata/page/variantFormUpload');
+		//frm.modal('show');
+		//frm.addClass('show');
+		//if(a){a.removeClass('show');}
+		$('#add-new-record-button').trigger('click');
+		//new bootstrap.Modal(frm).show();
+	}
+  }
+  
+  function setProDataEdit(sid){
+	var frm = $('#add-new-record');
+	console.log('qq');
+	if(frm){
+		frm.attr('pro-id', sid);
+		frm.attr('pro-url', '/api/v1/htm/pro/spr/rawdata/page/variantFormEdit');
+		$('#add-new-record-button').trigger('click');
+		//frm.addClass('show');
+	}
+  }
+
+  function afterSaveMainForm(sid){
+	var a = $('#add-new-record');
+	if(a){a.removeClass('show');}
+	getTable('#id-table-content');
+  }
+</script>
+<!--<script src="/assets/js/tables-datatables-basic.js"></script> -->
+
+
+
+

@@ -1,0 +1,538 @@
+<style type="text/css">.odd{background-color: #ddd !impotant;}.even{padding-left:10px !impotant;}</style>
+<style type="text/css">.tg-0lax{vertical-align: middle;  text-align: center;}</style>
+
+<div class="card text-center pt-3">
+	<div class="card-body p-0">
+	  <div class="tab-content p-0">
+	  <div class="row">
+		<div class="col-12">
+		  <table class="dt-fixedcolumns table table-bordered dataTable  table-hover no-footer" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" style="width: 100%;">
+			<tbody>
+				<tr>
+					<td width="5%"></td>
+					<td width="25%" align="left">Текущие позиции</td>
+					<td width="30%"></td>
+					<td width="20%" align="right">{{Net_Cash_Flow_str|raw}}</td>
+					<td width="20%" align="right">{{Operating_Profit_str|raw}}</td>
+				</tr>
+
+			</tbody>
+		 </table>
+		 <div class="w-100 p-1"></div>
+		  <table class="dt-fixedcolumns table table-bordered dataTable  table-hover no-footer" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info" style="width: 100%;">
+			<thead>
+				<tr class="table-light"><!--   -->
+					<th width="5%" class="text-center">№</th>
+					<th width="25%" align="left" class="text-center">Фактор</th>
+					<th width="30%" class="text-center">Изменение</th>
+					<th width="20%" align="right" class="text-center">Операционный денежный поток</th>
+					<th width="20%" align="right" class="text-center">Операционная прибыль</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td width="5%">1</td>
+					<td align="left">Цена</td>
+					<td class="text-center">
+					  <div class="row">
+						<div class="col"></div>
+						<div class="col-md-6">
+						  <input class="form-control" type="number" value="1" id="id_revenue">
+						</div>
+						<label for="id_revenue" class="col-md-2 col-form-label text-start">%</label>
+						<div class="col"></div>
+					  </div>
+					</td>
+					<td class="text-end"><div id="id_revenue1"></div></td>
+					<td class="text-end"><div id="id_revenue2"></div></td>
+				</tr>
+				<tr>
+					<td width="5%">2</td>
+					<td align="left">Объем продаж</td>
+					<td width="30%">
+					  <div class="row">
+						<div class="col"></div>
+						<div class="col-md-6">
+						  <input class="form-control" type="number" value="1" id="id_vSale">
+						</div>
+						<label for="id_vSale" class="col-md-2 col-form-label text-start">%</label>
+						<div class="col"></div>
+					  </div>
+					</td>
+					<td align="right"><div id="id_vSale1"></div></td>
+					<td align="right"><div id="id_vSale2"></div></td>
+				</tr>
+				<tr>
+					<td width="5%">3</td>
+					<td align="left">Абсолютно-переменные затраты</td>
+					<td width="30%">
+					  <div class="row">
+						<div class="col"></div>
+						<div class="col-md-6">
+						  <input class="form-control" type="number" value="1" id="id_TVC">
+						</div>
+						<label for="id_TVC" class="col-md-2 col-form-label text-start">%</label>
+						<div class="col"></div>
+					  </div>
+					</td>
+					<td align="right"><div id="id_TVC1"></div></td>
+					<td align="right"><div id="id_TVC2"></div></td>
+				</tr>
+				<tr>
+					<td width="5%">4</td>
+					<td align="left">Конверсионные затраты</td>
+					<td width="30%">
+					  <div class="row">
+						<div class="col"></div>
+						<div class="col-md-6">
+						  <input class="form-control" type="number" value="1" id="id_Overheads">
+						</div>
+						<label for="id_Overheads" class="col-md-2 col-form-label text-start">%</label>
+						<div class="col"></div>
+					  </div>
+					</td>
+					<td align="right"><div id="id_Overheads1"></div></td>
+					<td align="right"><div id="id_Overheads2"></div></td>
+				</tr>
+				<tr>
+					<td width="5%">5</td>
+					<td align="left">Срок оборачиваемости ДЗ</td>
+					<td width="30%">
+					  <div class="row">
+						<div class="col"></div>
+						<div class="col-md-6">
+						  <input class="form-control" type="number" value="1" id="id_dz">
+						</div>
+						<label for="id_dz" class="col-md-2 col-form-label text-start">дн.</label>
+						<div class="col"></div>
+					  </div>
+					</td>
+					<td align="right"><div id="id_dz1"></div></td>
+					<td align="right"><div id="id_dz2"></div></td>
+				</tr>
+				<tr>
+					<td width="5%">6</td>
+					<td align="left">Срок оборачиваемости запасов</td>
+					<td width="30%">
+					  <div class="row">
+						<div class="col"></div>
+						<div class="col-md-6">
+						  <input class="form-control" type="number" value="1" id="id_inv">
+						</div>
+						<label for="id_inv" class="col-md-2 col-form-label text-start">дн.</label>
+						<div class="col"></div>
+					  </div>
+					</td>
+					<td align="right"><div id="id_inv1"></div></td>
+					<td align="right"><div id="id_inv1"></div></td>
+				</tr>
+				<tr>
+					<td width="5%">7</td>
+					<td align="left">Срок оборачиваемости КЗ</td>
+					<td width="30%">
+					 <div class="row">
+						<div class="col"></div>
+						<div class="col-md-6">
+						  <input class="form-control" type="number" value="1" id="id_kz">
+						</div>
+						<label for="id_kz" class="col-md-2 col-form-label text-start">дн.</label>
+						<div class="col"></div>
+					  </div>
+					</td>
+					<td align="right"><div id="id_kz1"></div></td>
+					<td align="right"><div id="id_kz1"></div></td>
+				</tr>
+			</tbody>
+		 </table>
+		 <div class="w-100 p-1"></div> 
+		 <table class="dt-fixedcolumns table table-bordered dataTable  table-hover no-footer" id="DataTables_Table_2" aria-describedby="DataTables_Table_2_info" style="width: 100%;">
+			<tbody>
+				<tr class="font-weight-bold" >
+					<td width="5%"></td>
+					<td width="25%" align="left"><strong>Изменение ваших позиций</strong></td>
+					<td width="30%"></td>
+					<td width="20%" align="right" class="" id="id_res1td">
+						<div class="list-group-item d-flex justify-content-between align-items-center">
+							<span class="badge rounded-pill bg-label-success" id="id_res1td_prc">0</span>
+							<strong><div id="id_res1"></div></strong>
+						</div>
+					</td>
+						
+					<td width="20%" align="right" class="" id="id_res2td">
+						<div class="list-group-item d-flex justify-content-between align-items-center">
+							<span class="badge rounded-pill bg-label-success" id="id_res2td_prc">0</span>
+							<strong><div id="id_res2"></div></strong>
+						</div>
+					
+					</td>
+				</tr>
+
+			</tbody>
+		 </table>
+		 <!--<div class="w-100 p-4"></div> -->
+
+		</div><!--col-11-->
+	   </div><!--row-->
+	   <div class="row  p-1">
+			<div class="col"></div><!---->
+			<div class="col-4 text-center mt-2" style="min-width:350px">
+				<h5>Изменение операционного денежного потока</h5>
+				<div id="containerhChart1"></div>
+			</div><!--col-1-->
+			<div class="col-4 text-center mt-2" style="min-width:350px">
+				<h5>Изменение операционнаой прибыли</h5>
+				<div id="containerhChart2"></div>
+			</div><!--col-1-->
+			<div class="col"></div><!---->
+		</div><!--row-->
+	  </div>
+	</div>
+</div>
+
+<script>
+	var nf = new Intl.NumberFormat("ru", {
+	  //style: "currency",
+	  style: "decimal",
+	  //currency: "ru",
+	  maximumFractionDigits: 0,
+	  minimumFractionDigits:0,
+	  //roundingIncrement: 5,
+	  roundingMode: "halfEven"
+	});
+	
+	var np = new Intl.NumberFormat("ru", {
+	  //style: "currency",
+	  style: "percent",
+	  //currency: "ru",
+	  maximumFractionDigits: 2,
+	  minimumFractionDigits:2,
+	  //roundingIncrement: 5,
+	  roundingMode: "halfEven"
+	});
+	
+	var Operating_Profit = {{Operating_Profit|raw}};
+	var Revenue = {{Revenue|raw}};
+	var Operating_Cash_Flow = {{Operating_Cash_Flow|raw}};
+	var Gross_Margin_prc = {{Gross_Margin_prc|raw}};
+	var COGS = {{COGS|raw}};
+	var Overheads = {{Overheads|raw}};
+	var Net_Cash_Flow = {{Net_Cash_Flow|raw}};
+	var workCapitalPer100 = {{workCapitalPer100|raw}};
+	var cntDay ={{cntDay|raw}};
+	
+	var res1=0, res2=0, res3=0.0, res4=0.0, res5=0, res6=0, res7=0;
+	var res11=0, res22=0, res33=0, res44=0;//, res55=0, res66=0, res77=0;
+	
+	console.log(1);
+	let chart1 = {};
+	
+	let chart2 = {};
+	
+	$(function() {
+		console.log(2);
+		
+		chart1 = Highcharts.chart('containerhChart1', {
+			chart: {
+				type: 'waterfall'
+			},
+
+			title: {
+				text: ''
+			}, /*Изменение Операционного денежного потока*/
+
+			xAxis: {
+				type: 'category'
+			},
+
+			yAxis: {
+				title: {
+					text: '₽'
+				}
+			},
+
+			legend: {
+				enabled: false
+			},
+
+			tooltip: {
+				pointFormat: '<b>{point.y:,.0f}</b> ₽'
+			},
+
+			series: [{
+				upColor: Highcharts.getOptions().colors[2],
+				color: Highcharts.getOptions().colors[3],
+				data: [ {
+					name: 'Текущая операционная прибыль',
+					color: Highcharts.getOptions().colors[1],
+					y: {{Net_Cash_Flow|raw}}
+				}, {
+					name: 'Цена',
+					y: res1
+				}, {
+					name: 'Объем продаж',
+					y: res2
+				}, {
+					name: 'Абсолютно-переменные затраты',
+					y: res3
+				},{
+					name: 'Конверсионные затраты',
+					y: res4
+				}, {
+					name: 'Оборачиваемость ДЗ',
+					y: res5
+				}, {
+					name: 'Оборачиваемость запасов',
+					y: res6
+				}, {
+					name: 'Оборачиваемость КЗ',
+					y: res7
+				}, {
+					name: 'Операционная прибыль с коррекцией',
+					isSum: true,
+					color: Highcharts.getOptions().colors[1]
+				}],
+				dataLabels: {
+					enabled: false,
+					format: '{divide y 1000} тыс.'
+				},
+				pointPadding: 0
+			}]
+		});
+		
+		chart2 = Highcharts.chart('containerhChart2', {
+		chart: {
+			type: 'waterfall'
+		},
+		
+		title: {
+			text: ''
+		}, /*Изменение Операционнаой прибыли*/
+
+		xAxis: {
+			type: 'category'
+		},
+
+		yAxis: {
+			title: {
+				text: '₽'
+			}
+		},
+
+		legend: {
+			enabled: false
+		},
+
+		tooltip: {
+			pointFormat: '<b>{point.y:,.0f}</b> ₽'
+		},
+
+		series: [{
+			upColor: Highcharts.getOptions().colors[2],
+			color: Highcharts.getOptions().colors[3],
+			data: [ {
+				name: 'Текущая операционная прибыль',
+				color: Highcharts.getOptions().colors[1],
+				y: {{Operating_Profit|raw}}
+			}, {
+				name: 'Цена',
+				y: res11
+			}, {
+				name: 'Объем продаж',
+				y: res22
+			}, {
+				name: 'Абсолютно-переменные затраты',
+				y: res33
+			},{
+				name: 'Конверсионные затраты',
+				y: res44
+			}, {
+				name: 'Операционная прибыль с коррекцией',
+				isSum: true,
+				color: Highcharts.getOptions().colors[1]
+			}],
+			dataLabels: {
+				enabled: false,
+				format: '{divide y 1000} тыс.'
+			},
+			pointPadding: 0
+		}]
+	});
+		
+		$( "input" ).on( "change",   function() {
+		  getSelect($(this)); updAll();
+		});
+		
+		$('input').each(function (index, element) {
+			// input — селектор функции each()
+			// index — текущий индекс
+			// element — ссылка на текущий элемент
+			getSelect($(element));
+		    //console.log('Индекс элемента: ' + index + '; класс элемента: ' +$(element).attr('class'));
+	   }); 
+	   updAll();
+	});
+	
+	function getSelect(a){
+		//console.log($(a).attr('id'));
+				
+		if ($(a).attr('id')=='id_revenue'){
+			res1 = Operating_Cash_Flow*(a.val()/100);
+			var res = nf.format(res1); 
+			$('#id_revenue1').text(res);
+			res11 = Revenue*(a.val()/100);
+			res = nf.format(res11); 
+			$('#id_revenue2').text(res);
+		}
+		
+		if ($(a).attr('id')=='id_vSale'){
+			res2 = Operating_Cash_Flow*(a.val()/100)*Gross_Margin_prc;
+			var res = nf.format(res2); 
+			$('#id_vSale1').text(res);
+			res22 = Revenue*(a.val()/100)*Gross_Margin_prc;
+			res = nf.format(res22); 
+			$('#id_vSale2').text(res);
+		}
+		
+		if ($(a).attr('id')=='id_TVC'){
+			res3 = Revenue*(COGS/Revenue)*(a.val()/100)+Revenue*(COGS/Revenue)*(a.val()/100)*workCapitalPer100 ;
+			var res = nf.format(res3); 
+			$('#id_TVC1').text(res);
+			res33 = COGS*(a.val()/100);
+			res = nf.format(res33); 
+			$('#id_TVC2').text(res);
+		}
+		
+		if ($(a).attr('id')=='id_Overheads'){
+			res4 = Revenue*(Overheads/Revenue)*(a.val()/100)+Revenue*(Overheads/Revenue)*(a.val()/100)*workCapitalPer100 ;
+			console.log(res4);
+			var res = nf.format(res4);
+			$('#id_Overheads1').text(res);
+			res44 = Overheads*(a.val()/100);
+			res = nf.format(res44); 
+			$('#id_Overheads2').text(res);
+		}
+		
+		//Выручка/365×Сокращение срока оборачиваемости ДЗ (в днях)
+		if ($(a).attr('id')=='id_dz'){
+			res5 = Revenue/cntDay*(a.val())*(-1) ;
+			var res = nf.format(res5);
+			$('#id_dz1').text(res);
+			res = null; 
+			$('#id_dz2').text(res);
+		}
+		
+		if ($(a).attr('id')=='id_inv'){
+			res6 = COGS/cntDay *(a.val()) ;
+			var res = nf.format(res6);
+			$('#id_inv1').text(res);
+			res = null; 
+			$('#id_inv2').text(res);
+		}
+		
+		if ($(a).attr('id')=='id_kz'){
+			res7 = COGS/cntDay *(a.val())*(-1) ;
+			var res = nf.format(res7);
+			$('#id_kz1').text(res);
+			res = null; 
+			$('#id_kz2').text(res);
+		}
+	}
+	
+	function updAll(){
+		console.log(4);
+		var res = res1+res2+res3+res4+res5+res6+res7; 
+		if (res < 0) { 
+			$('#id_res1td').addClass("table-danger");  
+			$('#id_res1td').removeClass("table-success"); 
+			
+			$('#id_res1td_prc').removeClass("bg-label-success");
+			$('#id_res1td_prc').addClass("bg-label-danger");  
+		} else { 
+			$('#id_res1td').addClass("table-success");  
+			$('#id_res1td').removeClass("table-danger"); 
+			
+			$('#id_res1td_prc').removeClass("bg-label-danger");
+			$('#id_res1td_prc').addClass("bg-label-success"); 
+		}
+		$('#id_res1').text(nf.format(res));
+		$('#id_res1td_prc').text(np.format(res/Net_Cash_Flow ));
+
+		res = res11+res22+res33+res44; 
+		if (res < 0) { 
+			$('#id_res2td').removeClass("table-success"); 
+			$('#id_res2td').addClass("table-danger");  
+
+			$('#id_res2td_prc').removeClass("bg-label-success");
+			$('#id_res2td_prc').addClass("bg-label-danger");  
+			 
+		} else { 
+			$('#id_res2td').addClass("table-success");  
+			$('#id_res2td').removeClass("table-danger"); 
+			
+			$('#id_res2td_prc').removeClass("bg-label-danger");
+			$('#id_res2td_prc').addClass("bg-label-success"); 
+		}
+		$('#id_res2').text(nf.format(res));
+		$('#id_res2td_prc').text(np.format(res/Operating_Profit ));
+		
+		preparedSeriesData1 = [ {
+				name: 'Текущий денежный поток',
+				color: Highcharts.getOptions().colors[1],
+				y: {{Net_Cash_Flow|raw}}
+			}, {
+				name: 'Цена',
+				y: res1
+			}, {
+				name: 'Объем продаж',
+				y: res2
+			}, {
+				name: 'Абсолютно-переменные затраты',
+				y: res3
+			},{
+				name: 'Конверсионные затраты',
+				y: res4
+			}, {
+				name: 'Оборачиваемость ДЗ',
+				y: res5
+			}, {
+				name: 'Оборачиваемость запасов',
+				y: res6
+			},{
+				name: 'Оборачиваемость КЗ',
+				y: res7
+			},{
+				name: 'Новый денежный поток',
+				isSum: true,
+				color: Highcharts.getOptions().colors[1]
+			}];
+		chart1.series[0].setData(preparedSeriesData1);
+		
+		preparedSeriesData2 = [ {
+				name: 'Текущая операционная прибыль',
+				color: Highcharts.getOptions().colors[1],
+				y: {{Operating_Profit|raw}}
+			}, {
+				name: 'Цена',
+				y: res11
+			}, {
+				name: 'Объем продаж',
+				y: res22
+			}, {
+				name: 'Абсолютно-переменные затраты',
+				y: res33
+			},{
+				name: 'Конверсионные затраты',
+				y: res44
+			}, {
+				name: 'Новая операционная прибыль',
+				isSum: true,
+				color: Highcharts.getOptions().colors[1]
+			}];
+		//console.log(preparedSeriesData);
+		chart2.series[0].setData(preparedSeriesData2);
+	}
+	
+	
+	
+
+</script>

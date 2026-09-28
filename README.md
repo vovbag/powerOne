@@ -5,6 +5,7 @@
 - templatePages - html шаблоны в которые подставляются данные в формате json
 
 # Сила одного
+Шаблоны для данного раздела начинаются с префикса rep_power_one_*
 ## Основной шаблон Анализ данных
 - templatePages\rep_power_one_content.html
 - движок для HightCharts https://www.highcharts.com/
